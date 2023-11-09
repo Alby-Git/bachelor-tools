@@ -1,4 +1,4 @@
-# MGnify_BProjekt - https://www.ebi.ac.uk/metagenomics/pipelines/5.0#raw
+# MGnify_BProjekt - [MGnify Pipeline](https://www.ebi.ac.uk/metagenomics/pipelines/5.0#raw)
 
 For my Bachelor's project, I am undertaking the task of porting, enhancing, and benchmarking a read-based MGnify analysis pipeline designed for microbiome data analysis, utilizing the Galaxy framework.
 
