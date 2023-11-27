@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<tool id="motus_merge" name="mOTUs_merge" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
+    <description>Merge multiple mOTU profiles</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <command detect_errors="exit_code"><![CDATA[
+        motus merge
+        #if $input.i
+            -i $input.i
+        #end if
+        #if $input.d
+            -d $input.d
+        #end if
+        #if $input.a
+            -a $input.a
+        #end if
+        -o $output.output_file
+        #if $output.biom_format
+            -B
+        #end if
+        -v $algorithm.verbosity
+    ]]></command>
+    <inputs>
+        <param name="i" type="text" label="List of mOTU profiles to merge" help="comma separated"/>
+        <param name="d" type="text" label="Directory to merge all files" />
+        <param name="a" type="select" multiple="true" label="Pre-computed profiles from environmental samples" help="Select one or more">
+            <option value="all">All</option>
+            <option value="air">Air</option>
+            <!-- Include other options here -->
+        </param>
+        <param name="verbosity" type="integer" label="Verbosity level" value="3" min="1" max="4"/>
+    </inputs>
+    <outputs>
+        <data name="output_file" format="txt" label="Merged mOTUs profile"/>
+    </outputs>
+    <help><![CDATA[
+        motus merge [options]
+
+        Input options:
+            -i FILE[,FILE] list of mOTU profiles to merge (comma separated)
+            -d DIR         merge all files in the directory DIR
+            -a STR[,STR]   add pre-computed profiles from different environmental samples
+
+        Output options:
+            -o FILE        output file name [stdout]
+            -B             print result in BIOM format
+
+        Algorithm options:
+            -v INT         verbosity level: 1=error, 2=warning, 3=message, 4+=debugging [3]
+    ]]></help>
+</tool>
