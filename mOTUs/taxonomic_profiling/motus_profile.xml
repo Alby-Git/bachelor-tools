@@ -4,7 +4,7 @@
     <description> Perform taxonomic profiling (map_tax + calc_mgc + calc_motu) in a single step </description>
     <!-- Import of macros from an external XML file -->
     <macros>
-        <import>macros.xml</import>
+        <import>../macros.xml</import>
     </macros>
     <!-- Expanding macros for requirements -->
     <expand macro="requirements" />
@@ -56,7 +56,8 @@
         #*======================================
                     Output reads
         ======================================*#
-         #if $additional_options.advanced == "advanced"
+
+        #if $additional_options.advanced == "advanced"
         #if $additional_options.ref_motus_only
             -e
         #end if
@@ -105,39 +106,40 @@
         </section>
     -->
 
-        <expand macro="in_fq"/>
-        <!-- Parameters for specifying the input reads in various orientations -->
-        <conditional name = "input_setting">
-            <param name="advanced" type="select" label="Specify advanced inputs">
-                <option value="simple" selected="true">No, use program defaults.</option>
-                <option value="advanced">Yes, see full parameter list.</option>
-            </param>
-            <when value="simple">
-            </when>
-            <when value="advanced">
-                <param name="forward_reads" type="data" format="fastq,fastq.gz" label="Forward reads" help="(-f)"/>
-                <param name="reverse_reads" type="data" format="fastq,fastq.gz" label="Reverse reads" help="(-r)"/>
-                <param name="unpaired_reads" type="data" format="fastq,fastq.gz" label="Unpaired reads" help="(-s)"/>
-                <param name="SAM_BAM_input" type="data" format="bam,sam" label="Provide SAM/BAM input file(s)" help="(-i)"/>
-                <param name="mgc_read_count" type="data" format="mgc" label="Provide mgc read count file(s)" help="(-m)"/>
-                <param name="sample_name" type="text" label="Sample name" help="(-n)" value="unnamed sample"/>
-            </when>
-        </conditional>
-    
-        <!-- Profiling information options as input parameters -->
-        <param argument="-g" type="integer" label="Number of marker genes cutoff" help="1=higher recall, 6=higher precision"
-        value="1" min="1" max="3" />
-        <param argument="-l" type="integer" label="Min length of the alignment (bp)" help="(-l)" value="75" min="75" />
-        <param argument="-t" type="integer" label="Number of threads" help="(-t)" value="1" min="1" />
-
-        <!-- TODO: Simulate and understand these two-->
-
-        <param argument="-v" type="integer" label="Verbosity level" help="verbosity level: 1=error, 2=warning, 3=message, 4+=debugging" value="3" min="1" max="4"/>
-        <param argument="-y" type="select" label="Type of read counts" help="(-y)" value="insert.scaled_counts">
-            <option value="base.coverage">base.coverage</option>
-            <option value="insert.raw_counts">insert.raw_counts</option>
-            <option value="insert.scaled_counts">insert.scaled_counts</option>
+    <expand macro="in_fq"/>
+    <!-- Parameters for specifying the input reads in various orientations -->
+    <conditional name = "input_setting">
+        <param name="advanced" type="select" label="Specify advanced inputs">
+            <option value="simple" selected="true">No, use program defaults.</option>
+            <option value="advanced">Yes, see full parameter list.</option>
         </param>
+        <when value="simple">
+            <!-- Define actions or defaults for the simple option if necessary -->
+        </when>
+        <when value="advanced">
+            <param name="forward_reads" type="data" format="fastq,fastq.gz" label="Forward reads" help="(-f)"/>
+            <param name="reverse_reads" type="data" format="fastq,fastq.gz" label="Reverse reads" help="(-r)"/>
+            <param name="unpaired_reads" type="data" format="fastq,fastq.gz" label="Unpaired reads" help="(-s)"/>
+            <param name="SAM_BAM_input" type="data" format="bam,sam" label="Provide SAM/BAM input file(s)" help="(-i)"/>
+            <param name="mgc_read_count" type="data" format="mgc" label="Provide mgc read count file(s)" help="(-m)"/>
+            <param name="sample_name" type="text" label="Sample name" help="(-n)" value="unnamed sample"/>
+        </when>
+    </conditional>
+
+    <!-- Profiling information options as input parameters -->
+    <param argument="-g" type="integer" label="Number of marker genes cutoff" help="1=higher recall, 6=higher precision"
+    value="1" min="1" max="3" />
+    <param argument="-l" type="integer" label="Min length of the alignment (bp)" help="(-l)" value="75" min="75" />
+    <param argument="-t" type="integer" label="Number of threads" help="(-t)" value="1" min="1" />
+
+    <!-- TODO: Simulate and understand these two-->
+
+    <param argument="-v" type="integer" label="Verbosity level" help="verbosity level: 1=error, 2=warning, 3=message, 4+=debugging" value="3" min="1" max="4"/>
+    <param argument="-y" type="select" label="Type of read counts" help="(-y)" value="insert.scaled_counts">
+        <option value="base.coverage">base.coverage</option>
+        <option value="insert.raw_counts">insert.raw_counts</option>
+        <option value="insert.scaled_counts">insert.scaled_counts</option>
+    </param>
 
     <!-- Output options -->
     <conditional name="additional_options">
@@ -180,8 +182,9 @@
      </outputs>
     <tests>
         <!-- Test cases for the tool -->
-        <test>
-            <!-- Test case definitions go here -->
+        <test expect_num_outputs="1">
+            <param name="in_file" value="test_data/test1_single.fastq" />
+            <output name="default" file="test_data/test1.motus" sort="true"/>
         </test>
     </tests>
     <help><![CDATA[

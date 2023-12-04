@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<tool id="motus_merge" name="mOTUs_merge" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
+    <!-- Basic information about the tool including its ID, name, version, and Galaxy profile version -->
+    <description> Merge several taxonomic profiling results into one table </description>
+    <!-- Import of macros from an external XML file -->
+    <macros>
+        <import>../macros.xml</import>
+    </macros>
+    <!-- Expanding macros for requirements -->
+    <expand macro="requirements" />
+    <!-- Command that will be executed, 'motus merge' is the main command -->
+    <command detect_errors="exit_code"><![CDATA[
+        motus merge
+        #if $input_files
+            -i '$input_files'
+        #end if
+        #if $merge_directory
+            -d '$merge_directory'
+        #end if
+        #if $add_profiles
+            -a '$add_profiles'
+        #end if
+        -o '$output_file'
+        #if $biom_format
+            -B
+        #end if
+        -v $verbosity
+    ]]></command>
+    <inputs>
+        <!-- Input options for mOTUs merge -->
+        <expand macro="in_fq"/>
+        <param name="input_files" type="data" format="txt" multiple="true" optional="true" label="List of mOTU profiles to merge" help="(-i) Comma separated"/>
+        <param name="merge_directory" type="text" label="Directory to merge all files" help="(-d)" />
+        <param name="add_profiles" type="text" label="Pre-computed profiles from different environmental samples" help="(-a) Comma separated" />
+        
+        <!-- Output file -->
+        <param name="output_file" type="text" label="Output file name" value="merged_profiles.txt" help="(-o)" />
+
+        <!-- BIOM format option -->
+        <param name="biom_format" type="boolean" label="Print result in BIOM format" help="(-B)" truevalue="-B" falsevalue="" checked="false"/>
+
+        <!-- Verbosity level -->
+        <param name="verbosity" type="integer" label="Verbosity level" help="verbosity level: 1=error, 2=warning, 3=message, 4+=debugging" value="3" min="1" max="4"/>
+    </inputs>
+    <outputs>
+        <!-- Output data, the format is specified as 'txt' -->
+        <data name="merged_profiles" format="txt" label="${tool.name} on ${on_string}: Merged Profiles" from_work_dir="merged_profiles.motus"/> 
+    </outputs>
+    <tests>
+        <!-- Test cases for the tool -->
+        <!-- Add appropriate test cases here -->
+    </tests>
+    <help><![CDATA[
+        motus merge [options]
+
+        Input options:
+            -i FILE[,FILE] list of mOTU profiles to merge (comma separated)
+            -d DIR         merge all files in the directory DIR
+            -a STR[,STR]   add pre-computed profiles from different environmental samples
+
+        Output options:
+            -o FILE        output file name [stdout]
+            -B             print result in BIOM format
+
+        Algorithm options:
+            -v INT         verbosity level: 1=error, 2=warning, 3=message, 4+=debugging [3]
+    ]]></help>
+    <expand macro="citations" />
+</tool>

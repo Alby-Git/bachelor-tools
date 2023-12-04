@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<tool id="motus_map_snv" name="mOTUs_map_snv" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
+    <description>Map SNVs using mOTUs</description>
+    <macros>
+        <import>../macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <command detect_errors="exit_code"><![CDATA[
+        motus map_snv
+        -f '$forward_reads'
+        -r '$reverse_reads'
+        -s '$unpaired_reads'
+        -db '$database_dir'
+        -o '$output_file'
+        -l $min_alignment_length
+        -t $threads
+        -v $verbosity
+    ]]></command>
+    <inputs>
+        <param name="forward_reads" type="data" format="fastq,fastq.gz" label="Forward reads" help="Input file(s) for reads in forward orientation"/>
+        <param name="reverse_reads" type="data" format="fastq,fastq.gz" label="Reverse reads" help="Input file(s) for reads in reverse orientation" optional="true"/>
+        <param name="unpaired_reads" type="data" format="fastq,fastq.gz" label="Unpaired reads" help="Input file(s) for unpaired reads" optional="true"/>
+        <param name="database_dir" type="text" label="Database directory" help="Provide a different database directory"/>
+        <param name="output_file" type="text" label="Output BAM file name" value="output.bam" help="Output BAM file name"/>
+
+        <param name="min_alignment_length" type="integer" label="Minimum length of the alignment" min="1" value="75" help="Minimum length of the alignment in base pairs"/>
+        <param name="threads" type="integer" label="Number of threads" min="1" value="1" help="Number of threads to use"/>
+        <param name="verbosity" type="integer" label="Verbosity level" min="1" max="4" value="3" help="Verbosity level: 1=error, 2=warning, 3=message, 4+=debugging"/>
+    </inputs>
+    <outputs>
+        <data name="output" format="bam" label="${tool.name} on ${on_string}: Output BAM"/>
+    </outputs>
+    <tests>
+        <!-- Add test cases here -->
+    </tests>
+    <help><![CDATA[
+        Usage: motus map_snv [options]
+
+        Input options:
+        -f  FILE[,FILE]  input file(s) for reads in forward orientation, fastq(.gz)-formatted
+        -r  FILE[,FILE]  input file(s) for reads in reverse orientation, fastq(.gz)-formatted
+        -s  FILE[,FILE]  input file(s) for unpaired reads, fastq(.gz)-formatted
+        -db  DIR          provide a different database directory
+
+        Output options:
+        -o  FILE         output BAM file name [stdout]
+
+        Algorithm options:
+        -l  INT          min length of the alignment (bp) [75]
+        -t  INT          number of threads [1]
+        -v  INT          verbosity level: 1=error, 2=warning, 3=message, 4+=debugging [3]
+    ]]></help>
+    <expand macro="citations" />
+</tool>

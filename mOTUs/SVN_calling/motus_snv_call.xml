@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<tool id="motus_snv_call" name="mOTUs_snv_call" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
+    <description>Call SNVs using mOTUs</description>
+    <macros>
+        <import>../macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <command detect_errors="exit_code"><![CDATA[
+        motus snv_call
+        -d '$input_dir'
+        -db '$database_dir'
+        -o '$output_dir'
+        #if $keep_dirs
+            -K
+        #end if
+        -fb $filter_coverage_breadth
+        -fd $filter_coverage_depth
+        -fm $motu_filter
+        -fp $position_filter_proportion
+        -fc $position_filter_coverage
+        -v $verbosity
+    ]]></command>
+    <inputs>
+        <param name="input_dir" type="data" format="bam" label="Directory with BAM files" help="Call metaSNV on all BAM files in the directory"/>
+        <param name="database_dir" type="text" label="Database directory" help="Provide a different database directory"/>
+        <param name="output_dir" type="text" label="Output directory" help="Output directory. Will fail if already exists"/>
+
+        <param name="keep_dirs" type="boolean" label="Keep all directories produced by metaSNV" truevalue="-K" falsevalue="" checked="false"/>
+        <param name="filter_coverage_breadth" type="float" label="Sample filter: Coverage breadth" value="80.0" min="0.0" help="Minimal horizontal mOTU coverage percentage per sample"/>
+        <param name="filter_coverage_depth" type="float" label="Sample filter: Coverage depth" value="5.0" min="0.0" help="Minimal average vertical mOTU coverage per sample"/>
+        <param name="motu_filter" type="integer" label="mOTU filter" value="2" min="1" help="Minimum number of samples meeting coverage criteria per mOTU"/>
+        <param name="position_filter_proportion" type="float" label="Position filter: Proportion of informative samples" value="0.90" min="0.0" help="Required proportion of informative samples per position"/>
+        <param name="position_filter_coverage" type="float" label="Position filter: Coverage per position" value="5.0" min="0.0" help="Minimum coverage per position per sample per mOTU"/>
+        <param name="verbosity" type="integer" label="Verbosity level" min="1" max="4" value="3" help="Verbosity level: 1=error, 2=warning, 3=message, 4+=debugging"/>
+    </inputs>
+    <outputs>
+        <data name="output" format="txt" label="${tool.name} on ${on_string}: SNV Call Output"/>
+    </outputs>
+    <tests>
+        <!-- Add test cases here -->
+    </tests>
+    <help><![CDATA[
+        Usage: motus snv_call -d <DIR> -o <DIR> [options]
+
+        Input options:
+        -d  DIR     Call metaSNV on all BAM files in the directory
+        -db DIR     provide a different database directory
+
+        Output options:
+        -o  DIR     Output directory. Will fail if already exists
+        -K          Keep all the directories produced by metaSNV. Default is to remove cov, distances, filtered, snpCaller
+
+        Algorithm options:
+        -fb FLOAT   Sample filter: Coverage breadth, minimal horizontal mOTU coverage percentage per sample [80.0]
+        -fd FLOAT   Sample filter: Coverage depth, minimal average vertical mOTU coverage per sample [5.0]
+        -fm INT     mOTU filter: Minimum number of samples meeting coverage criteria per mOTU [2]
+        -fp FLOAT   Position filter: Required proportion of informative samples (coverage non-zero) per position [0.90]
+        -fc FLOAT   Position filter: Minimum coverage per position per sample per mOTU [5.0]
+        -v  INT      verbosity level: 1=error, 2=warning, 3=message, 4+=debugging [3]
+    ]]></help>
+    <expand macro="citations" />
+</tool>

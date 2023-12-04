@@ -7,19 +7,18 @@ mOTUs (Microbial Organisms Taxonomic Units) is a bioinformatics tool designed fo
 
 ## Key Features
 
-- **Microbial Community Analysis**: Provides insights into the composition of microbial communities.
 - **Taxonomic Profiling**: Enables taxonomic profiling of metagenomic and metatranscriptomic data.
-- **Comparative Analysis**: Facilitates the comparison of microbial communities across different samples.
-
-## Installation
-
-To install mOTUs, follow the instructions provided in the installation guide on the [mOTUs GitHub Repository](https://github.com/motu-tool/mOTUs).
+- **SVN Calling**: Quantify differences between strain populations using single nucleotide variation.
 
 ## Usage
 
-Refer to the documentation for detailed instructions on how to use mOTUs for analyzing microbial communities. Example commands and usage scenarios are provided to help get started.
+Find a Tutorial [here](https://motu-tool.org/tutorial.html)
 
 ## Important Information
 
 - Ensure that your system meets the required dependencies and configurations for optimal performance.
 - Regular updates and bug fixes are provided, so keep your installation up to date.
+
+## mOTUS DB
+
+Find the mOTUs database [here](https://zenodo.org/records/5140350)
