@@ -1,0 +1,81 @@
+<tool id="seqprep" name="Merging paired-end Illumina reads (SeqPrep)" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@">
+    <description>Merge and Trim Adapter Sequences from Paired-End Illumina Reads</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="biotools"/>
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+        SeqPrep
+            -f '${input1}'
+            -r '${input2}'
+            #if $output_all
+            -1 '${output1}'
+            -2 '${output2}'
+            #end if
+            #if $merge_reads
+            -s '${merged}'
+            #end if
+            #if $adapter_a
+            -A '${adapter_a}'
+            #end if
+            #if $adapter_b
+            -B '${adapter_b}'
+            #end if
+            #if $quality_cutoff
+            -q $quality_cutoff
+            #end if
+            #if $min_length
+            -L $min_length
+            #end if
+    ]]></command>
+    <inputs>
+        <param label="First Read Input (FASTQ)" name="input1" type="data" format="fastq" />
+        <param label="Second Read Input (FASTQ)" name="input2" type="data" format="fastq" />
+        <param label="Merge Reads" name="merge_reads" type="boolean" truevalue="true" falsevalue="false" />
+        <param label="Output All Reads" name="output_all" type="boolean" truevalue="true" falsevalue="false" help="If selected, output both individual and merged reads. Otherwise, output only merged reads if 'Merge Reads' is selected." />
+        <param label="Adapter Sequence A" name="adapter_a" type="text" optional="true" />
+        <param label="Adapter Sequence B" name="adapter_b" type="text" optional="true" />
+        <param label="Quality Score Cutoff" name="quality_cutoff" type="integer" optional="true" />
+        <param label="Minimum Length of Reads" name="min_length" type="integer" optional="true" />
+    </inputs>
+    <outputs>
+        <data format="fastq.gz" name="output1" label="${tool.name} on ${on_string}: First Read Output">
+            <filter>output_all</filter>
+        </data>
+        <data format="fastq.gz" name="output2" label="${tool.name} on ${on_string}: Second Read Output">
+            <filter>output_all</filter>
+        </data>
+        <data format="fastq.gz" name="merged" label="${tool.name} on ${on_string}: Merged Reads">
+            <filter>merge_reads</filter>
+        </data>
+    </outputs>
+    <tests>
+        <test expect_num_outputs="3">
+            <param name="input1" value="input1.fq" />
+            <param name="input2" value="input2.fq" />
+            <param name="merge_reads" value="true" />
+            <param name="output_all" value="true" />
+            <output name="output1" file="output1.fq.gz" />
+            <output name="output2" file="output2.fq.gz" />
+            <output name="merged" file="merged_output.fq.gz" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        **SeqPrep**
+
+        SeqPrep is a program to merge paired end Illumina reads that are overlapping into a single longer read. 
+        It can also trim adapter sequences from reads.
+
+        **Usage**
+
+        Select the input FASTQ files for the first and second reads. 
+        Optionally, provide custom adapter sequences, a quality score cutoff, and a minimum length for trimmed or merged reads. 
+        If merging is enabled, the merged output will be provided in addition to the individual read outputs.
+
+        **Outputs**
+
+        The output will be provided in gzipped FASTQ format.
+    ]]></help>
+    <expand macro="citations"/>
+</tool>
