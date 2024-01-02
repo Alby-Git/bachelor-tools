@@ -51,14 +51,61 @@
         </data>
     </outputs>
     <tests>
+        <!-- Basic Functionality Tests -->
+        <!-- Merging with Two Outputs -->
         <test expect_num_outputs="3">
             <param name="input1" value="input1.fq" />
             <param name="input2" value="input2.fq" />
-            <param name="merge_reads" value="true" />
             <param name="output_all" value="true" />
+            <param name="merge_reads" value="true" />
             <output name="output1" file="output1.fq.gz" />
             <output name="output2" file="output2.fq.gz" />
             <output name="merged" file="merged_output.fq.gz" />
+        </test>
+    
+        <!-- Without Merging, Two Outputs -->
+        <test expect_num_outputs="2">
+            <param name="input1" value="input1.fq" />
+            <param name="input2" value="input2.fq" />
+            <param name="output_all" value="true" />
+            <param name="merge_reads" value="false" />
+            <output name="output1" file="outputNoMerge1.fq.gz" />
+            <output name="output2" file="outputNoMerge2.fq.gz" />
+        </test>
+    
+        <!-- No Outputs -->
+        <test expect_num_outputs="0">
+            <param name="input1" value="input1.fq" />
+            <param name="input2" value="input2.fq" />
+            <param name="output_all" value="false" />
+            <param name="merge_reads" value="false" />
+        </test>
+    
+        <!-- Advanced Functional Tests -->
+        <!-- Specific Adapters, Quality Cutoff, and Read Length -->
+        <test expect_num_outputs="3">
+            <param name="input1" value="input1.fq" />
+            <param name="input2" value="input2.fq" />
+            <param name="output_all" value="true" />
+            <param name="merge_reads" value="true" />
+            <param name="adapter_a" value="ACTGACTG" />
+            <param name="adapter_b" value="GTGACTGA" />
+            <param name="quality_cutoff" value="13" />
+            <param name="min_length" value="30" />
+            <output name="output1" file="output_adseq1.fq.gz" />
+            <output name="output2" file="output_adseq2.fq.gz" />
+            <output name="merged" file="merged_seqoutput.fq.gz" />
+        </test>
+    
+        <!-- Test with Empty Input Files -->
+        <test expect_num_outputs="3">
+            <param name="input1" value="empty1.fq" />
+            <param name="input2" value="empty2.fq" />
+            <param name="output_all" value="true" />
+            <param name="merge_reads" value="true" />
+            <output name="output1" file="empty_output1.fq.gz" />
+            <output name="output2" file="empty_output2.fq.gz" />
+            <output name="merged" file="empty_merged_output.fq.gz" />
         </test>
     </tests>
     <help><![CDATA[
