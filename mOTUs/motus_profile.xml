@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<tool id="motus_profile" name="mOTUs_profile" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
+    <description>Perform taxonomic profiling (map_tax + calc_mgc + calc_motu) in a single step</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <command detect_errors="exit_code"><![CDATA[
+        #if $db_select.db_source == 'history'
+            echo "Extracting database from history" &&
+            mkdir db_extracted &&
+            tar -zxvf '$db_select.database' -C db_extracted/ &&
+            DATABASE_DIR=$(basename '$db_select.database' .tar.gz) &&
+            echo "Database directory set to: \$DATABASE_DIR" &&
+        #else
+            echo "Using cached database directory: $db_select.db_cached.fields.path" &&
+            DATABASE_DIR='$db_select.db_cached.fields.path' &&
+        #end if
+    
+        echo "Running motus profile command with database directory: \$DATABASE_DIR" &&
+        motus profile
+        --threads \${GALAXY_SLOTS:-8}
+        -db './\$DATABASE_DIR'
+        #if $input_setting.advanced == "advanced"
+            #if $input_setting.forward_reads
+                -f '$input_setting.forward_reads'
+            #end if
+            #if $input_setting.reverse_reads
+                -r '$input_setting.reverse_reads'
+            #end if
+            #if $input_setting.unpaired_reads
+                -s '$input_setting.unpaired_reads'
+            #end if
+            #if $input_setting.SAM_BAM_input
+                -i '$input_setting.SAM_BAM_input'
+            #end if
+            #if $input_setting.mgc_read_count
+                -m '$input_setting.mgc_read_count'
+            #end if
+            -n '$input_setting.sample_name'
+        #end if
+
+        #*======================================
+                    Output reads
+        ======================================*#
+
+        #if $additional_options.advanced == "advanced"
+            #if $additional_options.ref_motus_only
+                -e
+            #end if
+            #if $additional_options.full_species_name
+                -u
+            #end if
+            #if $additional_options.result_as_counts
+                -c
+            #end if
+            #if $additional_options.ncbi_tax_ids
+                -p
+            #end if
+            #if $additional_options.biom_format
+                -B
+            #end if
+            #if $additional_options.cami_format
+                -C $additional_options.cami_format
+            #end if
+            #if $additional_options.full_rank_taxonomy
+                -q
+            #end if
+            #if $additional_options.taxonomic_level
+                -k $additional_options.taxonomic_level
+            #end if
+        #end if
+    ]]></command>
+
+    <inputs>
+        <conditional name="db_select">
+            <param name="db_source" type="select" label="Choose the source of the mOTUs database">
+                <option value="cached">Use a pre-installed database</option>
+                <option value="history">Use a database from history</option>
+            </param>
+            <when value="cached">
+                <param name="db_cached" type="select" label="Using built-in mOTUs DB" help="">
+                    <options from_data_table="mOTUs_db">
+                        <column name="value" index="0" />
+                        <column name="name" index="1" />
+                        <column name="version" index="2" />
+                        <column name="path" index="3" />
+                        <filter type="sort_by" column="1"/>
+                    </options>
+                    <validator type="no_options" message="A built-in mOTUs DB is not available. Please ask the Galaxy admins to install one on the server." />
+                </param>
+            </when>
+            <when value="history">
+                <param type="data" name="database" label="Database file" format="tar.gz" help="Upload a .tar.gz file containing the database"/>
+            </when>
+        </conditional>
+        <expand macro="in_fq"/>
+        <!-- Parameters for specifying the input reads in various orientations -->
+        <conditional name="input_setting">
+            <param name="advanced" type="select" label="Specify advanced inputs">
+                <option value="simple" selected="true">No, use program defaults.</option>
+                <option value="advanced">Yes, see full parameter list.</option>
+            </param>
+            <when value="simple">
+                <!-- Define actions or defaults for the simple option if necessary -->
+            </when>
+            <when value="advanced">
+                <param name="forward_reads" type="data" format="fastq,fastq.gz" label="Forward reads" help="(-f)"/>
+                <param name="reverse_reads" type="data" format="fastq,fastq.gz" label="Reverse reads" help="(-r)"/>
+                <param name="unpaired_reads" type="data" format="fastq,fastq.gz" label="Unpaired reads" help="(-s)"/>
+                <param name="SAM_BAM_input" type="data" format="bam,sam" label="Provide SAM/BAM input file(s)" help="(-i)"/>
+                <param name="mgc_read_count" type="data" format="mgc" label="Provide mgc read count file(s)" help="(-m)"/>
+                <param name="sample_name" type="text" label="Sample name" help="(-n)" value="unnamed sample"/>
+            </when>
+        </conditional>
+
+        <!-- Output options -->
+        <conditional name="additional_options">
+            <param name="advanced" type="select" label="Specify additional options">
+                <option value="simple">No, use program defaults</option>
+                <option value="advanced">Yes, see full parameter list</option>
+            </param>
+            <when value="advanced">
+                <param name="ref_motus_only" type="boolean" label="Only species with reference genomes" help="(-e) Only include species with reference genomes (ref-mOTUs)." truevalue="-e" falsevalue=""/>
+                <param name="full_species_name" type="boolean" label="Print full name of the species" help="(-u) Print the full name of the species." truevalue="-u" falsevalue=""/>
+                <param name="result_as_counts" type="boolean" label="Print results as counts" help="(-c) Print result as counts instead of relative abundances." truevalue="-c" falsevalue=""/>
+                <param name="ncbi_tax_ids" type="boolean" label="Print NCBI taxonomy identifiers" help="(-p) Print NCBI taxonomy identifiers." truevalue="-p" falsevalue=""/>
+                <param name="biom_format" type="boolean" label="Print result in BIOM format" help="(-B) Print result in BIOM format." truevalue="-B" falsevalue=""/>
+                <param name="cami_format" type="select" label="Print result in CAMI format" help="(-C) Print result in CAMI format (BioBoxes format 0.9.1).">
+                    <option value="precision">precision</option>
+                    <option value="recall">recall</option>
+                    <option value="parenthesis">parenthesis</option>
+                </param>
+                <param name="full_rank_taxonomy" type="boolean" label="Print the full rank taxonomy" help="(-q) Print the full rank taxonomy." truevalue="-q" falsevalue=""/>
+                <param name="taxonomic_level" type="select" label="Taxonomic level" help="(-k) Taxonomic level.">
+                    <option value="kingdom">kingdom</option>
+                    <option value="phylum">phylum</option>
+                    <option value="class">class</option>
+                    <option value="order">order</option>
+                    <option value="family">family</option>
+                    <option value="genus">genus</option>
+                    <option value="mOTU">mOTU</option>
+                </param>
+            </when>
+            <when value="simple">
+                <!-- Define actions or defaults for the simple option if necessary -->
+            </when>
+        </conditional>
+    </inputs>
+    <outputs>
+        <data name="default" format_source="in_file" label="taxonomic profile"/> 
+    </outputs>
+    <tests>
+        <test expect_num_outputs="1">
+            <conditional name="db_select">
+                <param name="db_source" value="history" />
+                <param name="database" value="db_mOTU_v3.1.0.tar.gz" />
+            </conditional>
+            <param name="in_file" value="test1_single.fastq" />
+            <output name="default" file="test1.motus" sort="true"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+        
+        motus profile [options]
+
+        Input options:
+            -f FILE[,FILE]   input file(s) for reads in forward orientation, fastq(.gz)-formatted
+            -r  FILE[,FILE]  input file(s) for reads in reverse orientation, fastq(.gz)-formatted
+            -s  FILE[,FILE]  input file(s) for unpaired reads, fastq(.gz)-formatted
+            -n  STR          sample name ['unnamed sample']
+            -i  FILE[,FILE]  provide SAM or BAM input file(s)  (generated by motus map_tax)
+            -m  FILE         provide a mgc reads count file (generated by motus calc_mgc)
+            -db DIR          provide a different database directory
+
+        Output options:
+            -o  FILE         output file name [stdout]
+            -I  FILE         save the result of BWA in BAM format (output of motus map_tax)
+            -M  FILE         save the mgc reads count (output of motus calc_mgc)
+            -e               only species with reference genomes (ref-mOTUs)
+            -u               print the full name of the species
+            -c               print result as counts instead of relative abundances
+            -p               print NCBI taxonomy identifiers
+            -B               print result in BIOM format
+            -C  STR          print result in CAMI format (BioBoxes format 0.9.1)
+                                    Values: [precision, recall, parenthesis]
+            -q               print the full rank taxonomy
+            -A               print all taxonomic levels together (kingdom to mOTUs, override -k)
+            -k  STR          taxonomic level [mOTU]
+                                    Values: [kingdom, phylum, class, order, family, genus, mOTU]
+
+        Algorithm options:
+            -g  INT          number of marker genes cutoff: 1=higher recall, 6=higher precision [3]
+            -l  INT          min length of the alignment (bp) [75]
+            -t  INT          number of threads [1]
+            -v  INT          verbosity level: 1=error, 2=warning, 3=message, 4+=debugging [3]
+            -y  STR          type of read counts [insert.scaled_counts]
+                                Values: [base.coverage, insert.raw_counts, insert.scaled_counts]
+
+    ]]></help>
+    <expand macro="citations" />
+</tool>

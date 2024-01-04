@@ -1,6 +1,4 @@
 <macros>
-    <!-- This section lists all the package dependencies needed for the mOTUs tool to run. -->
-    <!-- It ensures the correct versions of mOTUs, bwa, and samtools are used for compatibility and reproducibility. -->
     <xml name="requirements">
         <requirements>
             <requirement type="package" version="@TOOL_VERSION@">motus</requirement>
@@ -8,46 +6,31 @@
             <requirement type="package" version="0.7.15">bwa</requirement>
             <!-- the SAMtools v1.5 or higher -->
             <requirement type="package" version="1.5">samtools</requirement>
-            <!-- Add additional requirements here if needed -->
         <yield/>
         </requirements>
     </xml>
 
-    <!-- Cross-references to bioinformatics databases or repositories. Currently includes a reference to the mOTUs tool in the bio.tools database. -->
     <xml name="bio_tools">
         <xrefs>
             <xref type="bio.tools">motus</xref>
-            <!-- Add additional cross-references here if applicable -->
         </xrefs>
     </xml>
 
-    <!-- The version token for the mOTUs tool, easily changeable for updates. -->
     <token name = "@TOOL_VERSION@">3.1</token>
     <token name = "@VERSION_SUFFIX@">0</token>
     <token name="@COMPATIBLE_MOTUSDB_VERSION@">3.0.1</token>
 
-    <!-- Defines the input parameter for the mOTUs tool, accepting FASTQ files in uncompressed or gzipped formats. -->
     <xml name="in_fq">
         <param name="in_file" type="data" format="fastq,fastq.gz" label="Input FASTQ file"/>
     </xml>
 
-    <!-- This section is reserved for listing academic papers or other resources for users to cite when using the mOTUs tool. -->
     <xml name="citations">
         <citations>
-            <!-- Add citations here -->
-            <citation type="doi">10.1186/s40168-022-01410-z</citation>
+            <citation type="doi">10.1038/nmeth.2066</citation>
+            <citation type="doi">10.1038/s41564-018-0176-9</citation>
+            <citation type="doi">10.1038/s41587-020-0468-5</citation>
             <yield />
         </citations>
     </xml>
-
-
-    <!-- Optional: Include an stdio section for handling standard output and error streams. -->
-    <!-- <xml name="stdio"> -->
-    <!--    <stdio> -->
-    <!--       <exit_code range="1:"/> -->
-    <!--       <exit_code range=":-1"/> -->
-    <!--       <regex match="Error:"/> -->
-    <!--       <regex match="Exception:"/> -->
-    <!--    </stdio> -->
-    <!-- </xml> -->
+    
 </macros>

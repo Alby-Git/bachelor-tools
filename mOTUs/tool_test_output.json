@@ -1,0 +1,30 @@
+{
+    "summary": {
+        "num_errors": 1,
+        "num_failures": 0,
+        "num_skips": 0,
+        "num_tests": 1
+    },
+    "tests": [
+        {
+            "data": {
+                "dynamic_param_error": true,
+                "execution_problem": "parameter 'db_cached': an invalid option (None) was selected, please verify",
+                "inputs": {
+                    "in_file": {
+                        "id": "2af7d7b37eb289a6",
+                        "src": "hda"
+                    }
+                },
+                "status": "error",
+                "test_index": 0,
+                "time_seconds": 5.518359661102295,
+                "tool_id": "motus_profile",
+                "tool_version": "3.1+galaxy0"
+            },
+            "has_data": true,
+            "id": "motus_profile-0"
+        }
+    ],
+    "version": "0.1"
+}
