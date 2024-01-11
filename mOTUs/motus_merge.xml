@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<tool id="motus_merge" name="mOTUs_merge" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
+    <description> Merge several taxonomic profiling results into one table </description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
+
+    <command detect_errors="exit_code"><![CDATA[
+        #if $db_select.db_source == 'cached'
+            DATABASE_DIR='$db_select.db_cached.fields.path'
+        #elif $db_select.db_source == 'history' and $db_select.database is not None
+            tar -zxvf '$db_select.database' -C ./ &&
+            DATABASE_DIR=$(basename '$db_select.database' .tar.gz)
+        #else
+            wget -O db_mOTU_v3.1.0.tar.gz "https://zenodo.org/record/7778108/files/db_mOTU_v3.1.0.tar.gz" &&
+            tar -zxvf db_mOTU_v3.1.0.tar.gz -C ./ &&
+            DATABASE_DIR=$(basename 'db_mOTU_v3.1.0.tar.gz' .tar.gz)
+        #end if
+
+        echo "Running motus merge command with database directory: \$DATABASE_DIR" &&
+        motus merge
+            -i '$input_files'
+            -d '$merge_directory'
+            -a '$add_profiles'
+            -o '$output_file'
+            #if $biom_format
+                -B
+            #end if
+            -v $verbosity
+    ]]></command>
+
+    <inputs>
+        <conditional name="db_select">
+            <!-- Include the same database selection structure as in motus_profile -->
+            <param name="db_source" type="select" label="Choose the source of the mOTUs database">
+                <option value="cached">Use a pre-installed database</option>
+                <option value="history">Use a database from history</option>
+            </param>
+            <when value="cached">
+                <param name="db_cached" type="select" label="Choose a pre-installed mOTUs database" help="Select one of the pre-installed mOTUs databases. These databases are configured and maintained by the Galaxy server administrators.">
+                    <options from_data_table="mOTUs_db">
+                        <column name="value" index="0" />
+                        <column name="name" index="1" />
+                        <column name="version" index="2" />
+                        <column name="path" index="3" />
+                        <filter type="sort_by" column="1"/>
+                    </options>
+                    <validator type="no_options" message="No pre-installed mOTUs databases are available. Please contact the Galaxy server administrators to request installation or use a database from your history." />
+                </param>
+            </when>
+            <when value="history">
+                <param type="data" name="database" format="tar.gz" label="Database file" help="You can either upload your own mOTUs database file (.tar.gz format), or the tool will automatically download the default mOTUs database from https://zenodo.org/record/7778108/files/db_mOTU_v3.1.0.tar.gz if no file is provided." optional="true"/>
+            </when>
+        </conditional>
+        <expand macro="in_fq"/>
+        <param name="input_files" type="data" format="txt" multiple="true" optional="true" label="List of mOTU profiles to merge" help="(-i) Comma separated"/>
+        <param name="merge_directory" type="text" label="Directory to merge all files" help="(-d)" />
+        <param name="add_profiles" type="text" label="Pre-computed profiles from different environmental samples" help="(-a) Comma separated" />
+        <param name="output_file" type="text" label="Output file name" value="merged_profiles.txt" help="(-o)" />
+        <param name="biom_format" type="boolean" label="Print result in BIOM format" help="(-B)" truevalue="-B" falsevalue="" checked="false"/>
+        <param name="verbosity" type="integer" label="Verbosity level" help="verbosity level: 1=error, 2=warning, 3=message, 4+=debugging" value="3" min="1" max="4"/>
+    </inputs>
+
+    <outputs>
+        <data name="merged_profiles" format="txt" label="${tool.name} on ${on_string}: Merged Profiles" from_work_dir="merged_profiles.motus"/> 
+    </outputs>
+
+    <tests>
+        <test expect_num_outputs="1">
+            <conditional name="db_select">
+                <param name="db_source" value="history" />
+                <param name="database" value="db_mOTU_v3.1.0.tar.gz"/>
+            </conditional>
+            <param name="in_file" value="test1_single.fastq" />
+            <output name="merged_profiles" file="expected_output_test1.motus" />
+        </test>
+    </tests>
+
+    <help><![CDATA[
+        motus merge [options]
+
+        Input options:
+            -i FILE[,FILE] list of mOTU profiles to merge (comma separated)
+            -d DIR         merge all files in the directory DIR
+            -a STR[,STR]   add pre-computed profiles from different environmental samples
+
+        Output options:
+            -o FILE        output file name [stdout]
+            -B             print result in BIOM format
+
+        Algorithm options:
+            -v INT         verbosity level: 1=error, 2=warning, 3=message, 4+=debugging [3]
+    ]]></help>
+    <expand macro="citations" />
+</tool>

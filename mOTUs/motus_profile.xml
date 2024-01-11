@@ -145,7 +145,7 @@
         </conditional>
     </inputs>
     <outputs>
-        <data name="default" format_source="in_file" label="taxonomic profile"/> 
+        <data name="motus_profile" format_source="in_file" label="taxonomic profile"/> 
     </outputs>
     <tests>
         <test expect_num_outputs="1">
@@ -154,7 +154,7 @@
                 <param name="database" value="db_mOTU_v3.1.0.tar.gz"/>
             </conditional>
             <param name="in_file" value="test1_single.fastq" />
-            <output name="default" file="expected_output_test1.motus" />
+            <output name="motus_profile" file="expected_output_test1.motus" />
         </test>
     </tests>
     
