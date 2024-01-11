@@ -33,11 +33,11 @@
         <param label="First Read Input (FASTQ)" name="input1" type="data" format="fastq" />
         <param label="Second Read Input (FASTQ)" name="input2" type="data" format="fastq" />
         <param label="Merge Reads" name="merge_reads" type="boolean" truevalue="true" falsevalue="false" />
-        <param label="Output All Reads" name="output_all" type="boolean" truevalue="true" falsevalue="false" help="If selected, output both individual and merged reads. Otherwise, output only merged reads if 'Merge Reads' is selected." />
-        <param label="Adapter Sequence A" name="adapter_a" type="text" optional="true" />
-        <param label="Adapter Sequence B" name="adapter_b" type="text" optional="true" />
-        <param label="Quality Score Cutoff" name="quality_cutoff" type="integer" optional="true" />
-        <param label="Minimum Length of Reads" name="min_length" type="integer" optional="true" />
+        <param label="Output All Reads" name="output_all" type="boolean" truevalue="true" falsevalue="false" help="Outputs both individual and merged reads." />
+        <param label="Adapter Sequence A" name="adapter_a" argument="-A" type="text" optional="true" value="AGATCGGAAGAGCGGTTCAG" />
+        <param label="Adapter Sequence B" name="adapter_b" argument="-B" type="text" optional="true" value="AGATCGGAAGAGCGTCGTGT" />
+        <param label="Quality Score Cutoff" name="quality_cutoff" argument="-q" type="integer" optional="true" value="13" min="0" max="40" />
+        <param label="Minimum Length of Reads" name="min_length" argument="-L" type="integer" optional="true" value="30" min="0" max="1000" />
     </inputs>
     <outputs>
         <data format="fastq.gz" name="output1" label="${tool.name} on ${on_string}: First Read Output">
@@ -52,6 +52,7 @@
     </outputs>
     <tests>
         <!-- Basic Functionality Tests -->
+
         <!-- Merging with Two Outputs -->
         <test expect_num_outputs="3">
             <param name="input1" value="input1.fq" />
@@ -82,6 +83,7 @@
         </test>
     
         <!-- Advanced Functional Tests -->
+        
         <!-- Specific Adapters, Quality Cutoff, and Read Length -->
         <test expect_num_outputs="3">
             <param name="input1" value="input1.fq" />
@@ -90,12 +92,13 @@
             <param name="merge_reads" value="true" />
             <param name="adapter_a" value="ACTGACTG" />
             <param name="adapter_b" value="GTGACTGA" />
-            <param name="quality_cutoff" value="13" />
-            <param name="min_length" value="30" />
+            <param name="quality_cutoff" value="15" />
+            <param name="min_length" value="35" />
             <output name="output1" file="output_adseq1.fq.gz" />
             <output name="output2" file="output_adseq2.fq.gz" />
             <output name="merged" file="merged_seqoutput.fq.gz" />
         </test>
+        
     
         <!-- Test with Empty Input Files -->
         <test expect_num_outputs="3">
