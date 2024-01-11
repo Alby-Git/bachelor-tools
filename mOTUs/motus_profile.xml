@@ -6,20 +6,20 @@
     </macros>
     <expand macro="requirements" />
     <command detect_errors="exit_code"><![CDATA[
-        #if $db_select.db_source == 'history'
-            echo "Extracting database from history" &&
-            mkdir db_extracted &&
-            tar -zxvf '$db_select.database' -C db_extracted/ &&
-            DATABASE_DIR=$(basename '$db_select.database' .tar.gz) &&
-            echo "Database directory set to: \$DATABASE_DIR" &&
+        #if $db_select.db_source == 'cached'
+            DATABASE_DIR='$db_select.db_cached.fields.path'
+        #elif $db_select.db_source == 'history' and $db_select.database is not None
+            tar -zxvf '$db_select.database' -C ./ &&
+            DATABASE_DIR=$(basename '$db_select.database' .tar.gz)
         #else
-            echo "Using cached database directory: $db_select.db_cached.fields.path" &&
-            DATABASE_DIR='$db_select.db_cached.fields.path' &&
+            wget -O db_mOTU_v3.1.0.tar.gz "https://zenodo.org/record/7778108/files/db_mOTU_v3.1.0.tar.gz" &&
+            tar -zxvf db_mOTU_v3.1.0.tar.gz -C ./ &&
+            DATABASE_DIR=$(basename 'db_mOTU_v3.1.0.tar.gz' .tar.gz)
         #end if
-    
+
         echo "Running motus profile command with database directory: \$DATABASE_DIR" &&
         motus profile
-        --threads \${GALAXY_SLOTS:-8}
+        -t \${GALAXY_SLOTS:-8}
         -db './\$DATABASE_DIR'
         #if $input_setting.advanced == "advanced"
             #if $input_setting.forward_reads
@@ -39,10 +39,6 @@
             #end if
             -n '$input_setting.sample_name'
         #end if
-
-        #*======================================
-                    Output reads
-        ======================================*#
 
         #if $additional_options.advanced == "advanced"
             #if $additional_options.ref_motus_only
@@ -79,7 +75,7 @@
                 <option value="history">Use a database from history</option>
             </param>
             <when value="cached">
-                <param name="db_cached" type="select" label="Using built-in mOTUs DB" help="">
+                <param name="db_cached" type="select" label="Choose a pre-installed mOTUs database" help="Select one of the pre-installed mOTUs databases. These databases are configured and maintained by the Galaxy server administrators.">
                     <options from_data_table="mOTUs_db">
                         <column name="value" index="0" />
                         <column name="name" index="1" />
@@ -87,11 +83,12 @@
                         <column name="path" index="3" />
                         <filter type="sort_by" column="1"/>
                     </options>
-                    <validator type="no_options" message="A built-in mOTUs DB is not available. Please ask the Galaxy admins to install one on the server." />
+                    <validator type="no_options" message="No pre-installed mOTUs databases are available. Please contact the Galaxy server administrators to request installation or use a database from your history." />
                 </param>
             </when>
+            
             <when value="history">
-                <param type="data" name="database" label="Database file" format="tar.gz" help="Upload a .tar.gz file containing the database"/>
+                <param type="data" name="database" format="tar.gz" label="Database file" help="You can either upload your own mOTUs database file (.tar.gz format), or the tool will automatically download the default mOTUs database from https://zenodo.org/record/7778108/files/db_mOTU_v3.1.0.tar.gz if no file is provided." optional="true"/>
             </when>
         </conditional>
         <expand macro="in_fq"/>
@@ -154,12 +151,13 @@
         <test expect_num_outputs="1">
             <conditional name="db_select">
                 <param name="db_source" value="history" />
-                <param name="database" value="db_mOTU_v3.1.0.tar.gz" />
+                <param name="database" value="db_mOTU_v3.1.0.tar.gz"/>
             </conditional>
             <param name="in_file" value="test1_single.fastq" />
-            <output name="default" file="test1.motus" sort="true"/>
+            <output name="default" file="expected_output_test1.motus" />
         </test>
     </tests>
+    
     <help><![CDATA[
         
         motus profile [options]
