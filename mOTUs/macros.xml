@@ -2,35 +2,26 @@
     <xml name="requirements">
         <requirements>
             <requirement type="package" version="@TOOL_VERSION@">motus</requirement>
-            <!-- the Burrow-Wheeler Aligner v0.7.15 or higher -->
-            <requirement type="package" version="0.7.15">bwa</requirement>
-            <!-- the SAMtools v1.5 or higher -->
-            <requirement type="package" version="1.5">samtools</requirement>
-        <yield/>
+            <yield/>
         </requirements>
     </xml>
-
     <xml name="bio_tools">
         <xrefs>
             <xref type="bio.tools">motus</xref>
         </xrefs>
     </xml>
-
-    <token name = "@TOOL_VERSION@">3.1</token>
-    <token name = "@VERSION_SUFFIX@">0</token>
+    <token name="@TOOL_VERSION@">3.1</token>
+    <token name="@VERSION_SUFFIX@">0</token>
     <token name="@COMPATIBLE_MOTUSDB_VERSION@">3.0.1</token>
-
     <xml name="in_fq">
         <param name="in_file" type="data" format="fastq,fastq.gz" label="Input FASTQ file"/>
     </xml>
-
     <xml name="citations">
         <citations>
             <citation type="doi">10.1038/nmeth.2066</citation>
             <citation type="doi">10.1038/s41564-018-0176-9</citation>
             <citation type="doi">10.1038/s41587-020-0468-5</citation>
-            <yield />
+            <yield/>
         </citations>
     </xml>
-    
 </macros>
