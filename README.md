@@ -1,4 +1,3 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
@@ -13,18 +12,21 @@
     Port, improve, and benchmark read-based MGnify analysis pipeline for microbiome data using the Galaxy framework
   <h4 align = "center"> by Albert Ratschinki </h4>
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Alby-Git/bachelor-tools"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/Alby-Git/bachelor-tools/tree/main/tools/mOTUs"><strong> mOTUs </strong></a> 
+    ·
+    <a href="https://github.com/Alby-Git/bachelor-tools/tree/main/tools/seqprep"><strong> SeqPrep </strong></a> 
     <br />
     <br />
     <a href="https://github.com/github_username/repo_name">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/Alby-Git/bachelor-tools/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/Alby-Git/bachelor-tools/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
