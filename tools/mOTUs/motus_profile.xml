@@ -7,16 +7,13 @@
     <command detect_errors="exit_code"><![CDATA[
         #if $db_select.db_source == 'cached'
             #set $DATABASE_DIR=$db_select.db_cached.fields.path
-        #elif $db_select.db_source == 'history' and $db_select.db_source is not None
+        #else
             tar -zxvf '${db_select.database}' -C ./ &&
             #set $DATABASE_DIR=$db_select.database
-        #else
-            wget -O db_mOTU_v3.1.0.tar.gz "https://zenodo.org/record/7778108/files/db_mOTU_v3.1.0.tar.gz" &&
-            tar -zxvf db_mOTU_v3.1.0.tar.gz -C ./ &&
-            #set $DATABASE_DIR='db_mOTU_v3.1.0'
         #end if
 
         echo "Running motus profile command with database directory: \$DATABASE_DIR" &&
+
         motus profile
         -t \${GALAXY_SLOTS:-8}
         -db '${DATABASE_DIR}'
@@ -81,11 +78,11 @@
                         <column name="path" index="3"/>
                         <filter type="sort_by" column="1"/>
                     </options>
-                    <validator type="no_options" message="No pre-installed mOTUs databases are available. Please contact the Galaxy server administrators to request installation or use a database from your history."/>
+                    <validator type="no_options" message="We are currently working on integrating the Data Manager for mOTUs. Once integrated, you will be able to select the mOTUs database directly from the cache. In the meantime, no pre-installed mOTUs databases are available."/>
                 </param>
             </when>
             <when value="history">
-                <param type="data" name="database" format="tar.gz" label="Database file" help="You can either upload your own mOTUs database file (.tar.gz format), or the tool will automatically download the default mOTUs database from https://zenodo.org/record/7778108/files/db_mOTU_v3.1.0.tar.gz if no file is provided." optional="true"/>
+                <param type="data" name="database" format="tar.gz" label="Database File" help="Please upload your database file in .tar.gz format. If you don't have a custom database, you can download the official mOTUs database from the provided link."/>
             </when>
         </conditional>
         <expand macro="in_fq"/>
@@ -96,7 +93,7 @@
                 <option value="advanced">Yes, see full parameter list.</option>
             </param>
             <when value="simple">
-                <!-- Define actions or defaults for the simple option if necessary -->
+            <!-- Define actions or defaults for the simple option if necessary -->
             </when>
             <when value="advanced">
                 <param name="forward_reads" type="data" format="fastq,fastq.gz" label="Forward reads" help="(-f)"/>
