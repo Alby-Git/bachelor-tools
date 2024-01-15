@@ -34,6 +34,7 @@
             #end if
 
             ## Additional Adapter/Primer Trimming Arguments ##
+
             #if $trimming_options.adapter_a
                 -A $trimming_options.adapter_a
             #end if
@@ -79,28 +80,11 @@
             #if $trimming_options.read_alignment_max_gap_fraction
                 -X $trimming_options.read_alignment_max_gap_fraction
             #end if
-
-            ## Additional Arguments for Merging ##
-            #if $merging_options.maximum_quality_score
-                -y $merging_options.maximum_quality_score
-            #end if
-            #if $merging_options.print_overhang
-                -g $merging_options.print_overhang
-            #end if
-            #if $merging_options.min_base_pair_overlap
-                -o $merging_options.min_base_pair_overlap
-            #end if
-            #if $merging_options.max_mismatch_fraction
-                -m $merging_options.max_mismatch_fraction
-            #end if
-            #if $merging_options.min_match_fraction
-                -n $merging_options.min_match_fraction
-            #end if
     ]]></command>
     <inputs>
         <param label="First Read Input (FASTQ)" name="input1" type="data" format="fastq" />
         <param label="Second Read Input (FASTQ)" name="input2" type="data" format="fastq" />
-        <param label="Merge Reads" name="merge_reads" type="boolean" truevalue="true" falsevalue="false" checked="true"/>
+        <param label="Merge Reads" name="merge_reads" type="boolean" truevalue="true" falsevalue="false" />
 
         <!-- Section for General Arguments -->
         <section name="general_options" title="General Arguments (Optional)" expanded="false">
@@ -128,15 +112,6 @@
             <param name="read_alignment_gap_extend" argument="-p" label="Read Alignment Gap-Extension" type="integer" value="9" optional="true" />
             <param name="read_alignment_gap_end" argument="-P" label="Read Alignment Gap-End" type="integer" value="5" optional="true" help="read alignment maximum fraction gap cutoff" />
             <param name="read_alignment_max_gap_fraction" argument="-X" label="Read Alignment Maximum Fraction Gap Cutoff" type="float" value="0.125" optional="true" />
-        </section>
-
-        <!-- Section for Optional Arguments for Merging: -->
-        <section name="merging_options" title="Optional Arguments for Merging" expanded="false">
-            <param name="maximum_quality_score" argument="-y" label="Maximum Quality Score in Output" type="text" optional="true" help="Maximum quality score in output (phred 33), default = ']'"/>
-            <param name="print_overhang" argument="-g" type="boolean" truevalue="-g" falsevalue="" checked="false" label="Print Overhang When Adapters Are Present and Stripped" help="Use this if reads are different lengths"/>
-            <param name="min_base_pair_overlap" argument="-o" type="integer" optional="true" value="15" label="Minimum Overall Base Pair Overlap" help="Minimum overall base pair overlap to merge two reads"/>
-            <param name="max_mismatch_fraction" argument="-m" type="float" optional="true" value="0.02" label="Maximum Fraction of Good Quality Mismatching Bases" help="Maximum fraction of good quality mismatching bases to overlap reads"/>
-            <param name="min_match_fraction" argument="-n" type="float" optional="true" value="0.9" label="Minimum Fraction of Matching Bases" help="Minimum fraction of matching bases to overlap reads"/>
         </section>
     </inputs>
     <outputs>

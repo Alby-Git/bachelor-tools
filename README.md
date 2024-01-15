@@ -73,7 +73,7 @@ Microbiome data analysis is a complex field, necessitating advanced computationa
 A significant part of my project involved wrapping the tools [SeqPrep](https://github.com/jstjohn/SeqPrep) and [mOTUs3](https://github.com/motu-tool/mOTUs) (an updated version compared to mOTUs2 as illustrated in the image) for integration into the [Galaxy platform](https://galaxyproject.org/). This integration was crucial as it allows the full workflow of the MGnify V5 pipeline to be executed within Galaxy, making it accessible for a broader range of researchers and facilitating ease of use.
 
 <br>
-<<div align="center" style="width: 80%; margin: auto;">
+<div align="center" style="width: 80%; margin: auto;">
   <figure>
     <a href="https://www.ebi.ac.uk/metagenomics/pipelines/5#raw">
       <img src="images/mgnifyV5.png" alt="MGnify Version 5 Logo" style="width: 100%; height: auto; border: 5px solid #7b2cbf;">
@@ -102,32 +102,39 @@ This is an example of how to list things you need to use the software and how to
   npm install npm@latest -g
   ```
 
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
+<!-- USAGE  -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The tools and methodologies developed in this project can be applied in various ways to facilitate and enhance microbiome data analysis. Below are some examples of how these tools can be utilized within the Galaxy framework:
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Example Use Cases:
+
+1. **Microbiome Data Preprocessing with SeqPrep:**
+   - Utilize SeqPrep for the preprocessing of microbiome sequencing data. This includes steps like merging paired-end reads and quality filtering.
+   - Example Workflow:    
+      - After uploading your paired-end sequencing data to Galaxy, select SeqPrep from the tool menu.
+      - Configure the tool parameters: specify the input files for forward and reverse reads, and set the merging and quality filtering parameters according to your experiment's requirements.
+      - Execute the tool to process the data. The output will be a single, merged file of high-quality reads, ready for further analysis.
+
+2. **Metagenomic Analysis with mOTUs:**
+   - Deploy mOTUs for metagenomic profiling. This tool helps in identifying and quantifying microbial taxa in the sample data.
+   - Example Workflow: 
+      - Start with high-quality, preprocessed reads (e.g., output from SeqPrep).
+      - Select mOTUs from the Galaxy tool menu.
+      - Input your reads into mOTUs. You may need to specify certain      parameters, like the type of analysis (e.g., species-level profiling) or other advanced settings based on your study.
+      Run the tool. mOTUs will output a detailed profile of the microbial community present in your sample.
+      - This output can be visualized directly in Galaxy using available visualization tools or exported for further analysis.
+
+### Integrating Tools in Galaxy:
+
+- **Galaxy Environment:** 
+  - [Galaxy](https://galaxyproject.org/) is an open, web-based platform for computational biomedical research. It allows users to reproduce and share analyses.
+  - Within Galaxy, tools like SeqPrep and mOTUs can be integrated to streamline and simplify the microbiome data analysis pipeline.
+
+### Additional Resources and Documentation:
+
+- For detailed instructions, use cases, and tutorials on how to use these tools in Galaxy, please refer to the [Galaxy Training Network](https://training.galaxyproject.org/training-material/).
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,12 +143,45 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+**Planemo**
+- [x] **Install and Configure Planemo**
+  - Setup Planemo environment on the system.
+- [x] **Planemo Tutorial**
+  - Complete introductory tutorials for understanding Planemo's functionalities.
+- [x] **Planemo Documentation**
+  - Extensive reading of the [Planemo Documentation](https://planemo.readthedocs.io/en/latest/index.html) to deepen understanding.
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+**SeqPrep**
+- [x] **Understanding SeqPrep**
+  - Research [SeqPrep](https://github.com/jstjohn/SeqPrep) tool and its mechanisms.
+- [x] **Blueprint for SeqPrep**
+  - Develop a plan for wrapping SeqPrep using Planemo.
+- [x] **Implement SeqPrep in Galaxy**
+  - Successfully wrap SeqPrep and demonstrate its functionality on Galaxy.
+- [ ] **Contribute to IUC**
+  - Prepare and submit a pull-request to integrate SeqPrep into the IUC main branch.
+
+**mOTUs**
+- [ ] **Explore mOTUs**
+  - Learn about the mOTUs tool and its applications.
+- [ ] **Plan mOTUs Integration**
+  - Design a strategy for incorporating mOTUs into Galaxy.
+- [ ] **Galaxy Implementation**
+  - Execute the integration of mOTUs into the Galaxy platform.
+- [ ] **Testing and Validation**
+  - Ensure mOTUs works seamlessly within Galaxy; perform tests.
+
+**mOTUs Data Manager**
+- [ ] **Understand Data Manager Requirements**
+  - Study the specific needs for a data manager for mOTUs.
+- [ ] **Development Plan**
+  - Draft a comprehensive plan for developing the mOTUs data manager.
+- [ ] **Implementation**
+  - Develop and integrate the data manager into the Galaxy ecosystem.
+- [ ] **Optimization and Review**
+  - Optimize for performance and user-friendliness; prepare for peer review.
+
+For a full list of proposed features and known issues, see the [open issues](https://github.com/Alby-Git/bachelor-tools/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -160,7 +200,7 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
+ 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -184,6 +224,10 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- Planemo 101 -->
+Instalation
+Test
+Serve
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
