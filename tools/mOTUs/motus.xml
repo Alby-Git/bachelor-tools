@@ -8,10 +8,11 @@
         #if $db_select.db_source == 'cached'
             #set $DATABASE_DIR=$db_select.db_cached.fields.path
         #else
-            tar -zxvf '${db_select.database}' -C ./ &&
-            #set $DATABASE_DIR=$db_select.database
+            #set $database_path = $db_select.database
+            mkdir database_dir &&
+            tar -zxvf '$database_path' -C database_dir/ &&
+            #set $DATABASE_DIR = 'database_dir'
         #end if
-
         echo "Running motus profile command with database directory: \$DATABASE_DIR" &&
 
         motus profile
