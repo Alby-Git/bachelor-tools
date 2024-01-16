@@ -20,10 +20,6 @@
     <a href="https://github.com/Alby-Git/bachelor-tools/tree/main/tools/seqprep"><strong> SeqPrep </strong></a> 
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">SepPrep IUC</a>
-    ·
-    <a href="https://github.com/github_username/repo_name">mOTUs galaxy tools</a>
-    ·
     <a href="https://github.com/Alby-Git/bachelor-tools/issues">Report Bug</a>
     ·
     <a href="https://github.com/Alby-Git/bachelor-tools/issues">Request Feature</a>
@@ -206,14 +202,6 @@ For a full list of proposed features and known issues, see the [open issues](htt
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTACT -->
-## Contact
-
-Albert Ratschinki -  albert.ratschinki@email.com
-
-Project Link: [https://github.com/Alby-Git/bachelor-tools](https://github.com/Alby-Git/bachelor-tools)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Planemo 101
 
