@@ -90,17 +90,37 @@ A significant part of my project involved wrapping the tools [SeqPrep](https://g
 
 <!-- GETTING STARTED -->
 ## Getting Started
+Follow these steps to use SeqPrep on the Galaxy platform and prepare for the upcoming integration of mOTUs.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+### Preparations
 
-### Prerequisites
+Before starting, ensure you have created an account on [Galaxy](https://usegalaxy.eu/). Galaxy offers a web-based platform with a wide array of bioinformatics tools for research.
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+### Using SeqPrep in Galaxy
+
+SeqPrep is going to be integrated into Galaxy and can be used for preprocessing microbiome sequencing data. Here's how to use it:
+
+1. **Create a Galaxy Account:**
+  - Visit [usegalaxy.eu](https://usegalaxy.eu/) and create an account if you don’t already have one.
+
+2. **Find the SeqPrep Tool:**
+  - Once logged in to Galaxy, search for "SeqPrep" in the tool search bar.
+
+3. **Upload Data:**
+  - Upload your microbiome sequencing data to Galaxy.
+
+4. **Configure SeqPrep:**
+  - Select SeqPrep from the list of tools and configure it according to your specific requirements for your data.
+
+5. **Run SeqPrep:**
+  - Execute the tool and wait for the results. SeqPrep will process your data
+
+appropriately, preparing it for further analysis.
+
+### Future Integration of mOTUs
+
+Currently, mOTUs is not yet directly integrated into Galaxy, but work is underway to make this tool available soon. Once mOTUs is integrated into Galaxy, it will enable efficient and user-friendly metagenomic analyses. Keep an eye on updates in our repository to stay informed about the integration of mOTUs.
+
 
 <!-- USAGE  -->
 ## Usage
@@ -158,20 +178,21 @@ The tools and methodologies developed in this project can be applied in various 
   - Develop a plan for wrapping SeqPrep using Planemo.
 - [x] **Implement SeqPrep in Galaxy**
   - Successfully wrap SeqPrep and demonstrate its functionality on Galaxy.
-- [ ] **Contribute to IUC**
-  - Prepare and submit a pull-request to integrate SeqPrep into the IUC main branch.
+- [x] **Contribute to IUC**
+  - Prepare and submit a pull-request to integrate SeqPrep into the IUC main branch. (Here)[https://github.com/galaxyproject/tools-iuc/pull/5719]
 
 **mOTUs**
-- [ ] **Explore mOTUs**
+- [x] **Explore mOTUs**
   - Learn about the mOTUs tool and its applications.
-- [ ] **Plan mOTUs Integration**
+- [x] **Plan mOTUs Integration**
   - Design a strategy for incorporating mOTUs into Galaxy.
 - [ ] **Galaxy Implementation**
   - Execute the integration of mOTUs into the Galaxy platform.
 - [ ] **Testing and Validation**
   - Ensure mOTUs works seamlessly within Galaxy; perform tests.
-
-**mOTUs Data Manager**
+- [ ] **Contribute to bgruening-galaxytools
+  - Prepare and submit a pull-request to integrate mOTUs into the galaxytools branch from bgruening main branch.
+  
 - [ ] **Understand Data Manager Requirements**
   - Study the specific needs for a data manager for mOTUs.
 - [ ] **Development Plan**
@@ -185,56 +206,55 @@ For a full list of proposed features and known issues, see the [open issues](htt
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
- 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Albert Ratschinki -  albert.ratschinki@email.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/Alby-Git/bachelor-tools](https://github.com/Alby-Git/bachelor-tools)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Planemo 101
 
-<!-- Planemo 101 -->
-Instalation
-Test
-Serve
+### Installation
 
-<!-- ACKNOWLEDGMENTS -->
+1. **Install Planemo:**
+
+   - For more information, visit the [Planemo documentation](https://planemo.readthedocs.io/en/latest/).
+
+### Test
+
+1. **Running Tests:**
+
+   - To test your Galaxy tools, use the following Planemo command:
+     ```sh
+     planemo test --galaxy_root /path/to/galaxy_root my_tool.xml
+     ```
+
+### Serve
+
+1. **Running a Local Galaxy Server:**
+
+   - To serve your tools in a local Galaxy instance, use this command:
+
+     ```sh
+     planemo serve --galaxy_root /path/to/galaxy_root my_tool.xml
+     ```
+
+   - This will start a local Galaxy server where you can test your tools in a real Galaxy environment.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+Special thanks to:
+
+* **Paul Zierep:** For his mentorship and expertise in guiding the development and implementation of the project, particularly in the areas of bioinformatics and data analysis.
+* **Rand:** For the significant assistance with Planemo and SeqPrep, facilitating key aspects of the project's development.
+* **Galaxy Project Team:** For providing an excellent platform for bioinforma
+tics research.
+* **SeqPrep and mOTUs Developers:** For their contributions to microbiome data analysis tools.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
