@@ -186,7 +186,7 @@ The tools and methodologies developed in this project can be applied in various 
   - Execute the integration of mOTUs into the Galaxy platform.
 - [ ] **Testing and Validation**
   - Ensure mOTUs works seamlessly within Galaxy; perform tests.
-- [ ] **Contribute to bgruening-galaxytools
+- [ ] **Contribute to bgruening-galaxytools**
   - Prepare and submit a pull-request to integrate mOTUs into the galaxytools branch from bgruening main branch.
   
 - [ ] **Understand Data Manager Requirements**
@@ -240,8 +240,7 @@ Special thanks to:
 
 * **Paul Zierep:** For his mentorship and expertise in guiding the development and implementation of the project, particularly in the areas of bioinformatics and data analysis.
 * **Rand:** For the significant assistance with Planemo and SeqPrep, facilitating key aspects of the project's development.
-* **Galaxy Project Team:** For providing an excellent platform for bioinforma
-tics research.
+* **Galaxy Project Team:** For providing an excellent platform for bioinformatics research.
 * **SeqPrep and mOTUs Developers:** For their contributions to microbiome data analysis tools.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
