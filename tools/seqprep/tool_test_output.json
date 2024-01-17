@@ -12,11 +12,11 @@
                     "general_options|min_length": "30",
                     "general_options|quality_cutoff": "13",
                     "input1": {
-                        "id": "b95bb1c21592b4d4",
+                        "id": "81684263d025adb1",
                         "src": "hda"
                     },
                     "input2": {
-                        "id": "8d25cafd8eb391f0",
+                        "id": "920ad766696c1cf2",
                         "src": "hda"
                     },
                     "merge_reads": true,
@@ -37,26 +37,26 @@
                     "trimming_options|read_alignment_max_gap_fraction": "0.125"
                 },
                 "job": {
-                    "command_line": "SeqPrep -f '/tmp/tmpbuvzt4wn/files/d/7/8/dataset_d78fb30d-ae89-4cf8-bc6f-8963db1b5dad.dat' -r '/tmp/tmpbuvzt4wn/files/c/3/3/dataset_c33053bc-762e-430e-8917-433016243514.dat' -1 '/tmp/tmpbuvzt4wn/job_working_directory/000/3/outputs/dataset_76cc5ff5-2eca-4285-b2f7-2be109464907.dat' -2 '/tmp/tmpbuvzt4wn/job_working_directory/000/3/outputs/dataset_1463bf4d-3f32-4bff-af76-eceff41377ff.dat'  -s '/tmp/tmpbuvzt4wn/job_working_directory/000/3/outputs/dataset_a927cf13-024d-46d5-921a-55c96277776b.dat'  -q 13 -L 30  -A AGATCGGAAGAGCGGTTCAG -B AGATCGGAAGAGCGTCGTGT -O 10 -M 0.02 -N 0.87 -b 50 -Q 8 -t 2 -e 2 -Z 26 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
+                    "command_line": "SeqPrep -f '/tmp/tmphtn8e6ou/files/8/f/6/dataset_8f6ba084-af2c-4626-8d01-e04ba378117e.dat' -r '/tmp/tmphtn8e6ou/files/d/f/0/dataset_df0fb2ab-9a44-469c-84f6-1eca4e4f2999.dat' -1 '/tmp/tmphtn8e6ou/job_working_directory/000/3/outputs/dataset_7d405dca-65e1-4c79-b858-6878b116f0bb.dat' -2 '/tmp/tmphtn8e6ou/job_working_directory/000/3/outputs/dataset_bdb47cbd-c62d-40ca-aa4d-3be3d2194e79.dat'  -s '/tmp/tmphtn8e6ou/job_working_directory/000/3/outputs/dataset_d6e42316-7aae-47cc-87f3-fc74ac7859e1.dat'  -q 13 -L 30  -A AGATCGGAAGAGCGGTTCAG -B AGATCGGAAGAGCGTCGTGT -O 10 -M 0.02 -N 0.87 -b 50 -Q 8 -t 2 -e 2 -Z 26 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
                     "command_version": "",
                     "copied_from_job_id": null,
-                    "create_time": "2024-01-15T13:51:06.387691",
+                    "create_time": "2024-01-17T14:07:33.137237",
                     "dependencies": [],
                     "exit_code": 0,
-                    "external_id": "56666",
+                    "external_id": "458864",
                     "galaxy_version": "23.1",
-                    "history_id": "b95bb1c21592b4d4",
-                    "id": "9282ff21eabe2938",
+                    "history_id": "81684263d025adb1",
+                    "id": "c78bcfdc1cb747bf",
                     "inputs": {
                         "input1": {
-                            "id": "b95bb1c21592b4d4",
+                            "id": "81684263d025adb1",
                             "src": "hda",
-                            "uuid": "d78fb30d-ae89-4cf8-bc6f-8963db1b5dad"
+                            "uuid": "8f6ba084-af2c-4626-8d01-e04ba378117e"
                         },
                         "input2": {
-                            "id": "8d25cafd8eb391f0",
+                            "id": "920ad766696c1cf2",
                             "src": "hda",
-                            "uuid": "c33053bc-762e-430e-8917-433016243514"
+                            "uuid": "df0fb2ab-9a44-469c-84f6-1eca4e4f2999"
                         }
                     },
                     "job_messages": [],
@@ -67,19 +67,19 @@
                     "output_collections": {},
                     "outputs": {
                         "merged": {
-                            "id": "4f7d68a4cf668214",
+                            "id": "dadce36532a50430",
                             "src": "hda",
-                            "uuid": "a927cf13-024d-46d5-921a-55c96277776b"
+                            "uuid": "d6e42316-7aae-47cc-87f3-fc74ac7859e1"
                         },
                         "output1": {
-                            "id": "9282ff21eabe2938",
+                            "id": "c78bcfdc1cb747bf",
                             "src": "hda",
-                            "uuid": "76cc5ff5-2eca-4285-b2f7-2be109464907"
+                            "uuid": "7d405dca-65e1-4c79-b858-6878b116f0bb"
                         },
                         "output2": {
-                            "id": "4b7543690eba41ff",
+                            "id": "8f815be1e810b24b",
                             "src": "hda",
-                            "uuid": "1463bf4d-3f32-4bff-af76-eceff41377ff"
+                            "uuid": "bdb47cbd-c62d-40ca-aa4d-3be3d2194e79"
                         }
                     },
                     "params": {
@@ -92,18 +92,18 @@
                         "trimming_options": "{\"adapter_a\": \"AGATCGGAAGAGCGGTTCAG\", \"adapter_b\": \"AGATCGGAAGAGCGTCGTGT\", \"adapter_bandwidth\": \"50\", \"adapter_overlap\": \"10\", \"gap_end\": \"2\", \"gap_extend\": \"2\", \"gap_open\": \"8\", \"local_alignment_score\": \"26\", \"max_mismatch_fraction\": \"0.02\", \"min_match_fraction\": \"0.87\", \"read_alignment_bandwidth\": \"50\", \"read_alignment_gap_end\": \"5\", \"read_alignment_gap_extend\": \"9\", \"read_alignment_gap_open\": \"26\", \"read_alignment_max_gap_fraction\": \"0.125\"}"
                     },
                     "state": "ok",
-                    "stderr": "\nPairs Processed:\t0\nPairs Merged:\t30\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000106\n",
+                    "stderr": "\nPairs Processed:\t0\nPairs Merged:\t30\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000098\n",
                     "stdout": "",
                     "tool_id": "seqprep",
-                    "tool_stderr": "\nPairs Processed:\t0\nPairs Merged:\t30\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000106\n",
+                    "tool_stderr": "\nPairs Processed:\t0\nPairs Merged:\t30\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000098\n",
                     "tool_stdout": "",
                     "traceback": null,
-                    "update_time": "2024-01-15T13:51:12.438002",
+                    "update_time": "2024-01-17T14:07:37.359577",
                     "user_email": "planemo@galaxyproject.org"
                 },
                 "status": "success",
                 "test_index": 0,
-                "time_seconds": 16.363746643066406,
+                "time_seconds": 14.761277437210083,
                 "tool_id": "seqprep",
                 "tool_version": "1.3.2+galaxy8"
             },
@@ -116,11 +116,11 @@
                     "general_options|min_length": "30",
                     "general_options|quality_cutoff": "13",
                     "input1": {
-                        "id": "a3eaa0bc01bcd292",
+                        "id": "40d45f2de2537ed6",
                         "src": "hda"
                     },
                     "input2": {
-                        "id": "4d035ecfa467a4c8",
+                        "id": "74c67404cfc2b38c",
                         "src": "hda"
                     },
                     "merge_reads": false,
@@ -141,26 +141,49 @@
                     "trimming_options|read_alignment_max_gap_fraction": "0.125"
                 },
                 "job": {
-                    "command_line": "SeqPrep -f '/tmp/tmpbuvzt4wn/files/9/b/f/dataset_9bf8e7ab-9ae3-4078-9989-1c081b289f34.dat' -r '/tmp/tmpbuvzt4wn/files/b/a/5/dataset_ba572fcb-c2fc-4f33-8567-c6bd16fa7623.dat' -1 '/tmp/tmpbuvzt4wn/job_working_directory/000/6/outputs/dataset_4211eb63-55e9-446f-a3ff-1ec5b6c7bbbe.dat' -2 '/tmp/tmpbuvzt4wn/job_working_directory/000/6/outputs/dataset_f674110d-9f3e-4e86-927b-df5e83eaf243.dat'   -q 13 -L 30  -A AGATCGGAAGAGCGGTTCAG -B AGATCGGAAGAGCGTCGTGT -O 10 -M 0.02 -N 0.87 -b 50 -Q 8 -t 2 -e 2 -Z 26 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
+                    "command_line": "SeqPrep -f '/tmp/tmphtn8e6ou/files/2/3/e/dataset_23e4b76f-fe19-4edc-948b-404c5bfcfab7.dat' -r '/tmp/tmphtn8e6ou/files/b/c/b/dataset_bcb30529-c0d7-48f4-9424-340f15d17a74.dat' -1 '/tmp/tmphtn8e6ou/job_working_directory/000/6/outputs/dataset_425407fd-9c91-40f6-a864-e821f1cc4b7c.dat' -2 '/tmp/tmphtn8e6ou/job_working_directory/000/6/outputs/dataset_e61a1b16-4635-4190-83ca-11b38156d083.dat'   -q 13 -L 30  -A AGATCGGAAGAGCGGTTCAG -B AGATCGGAAGAGCGTCGTGT -O 10 -M 0.02 -N 0.87 -b 50 -Q 8 -t 2 -e 2 -Z 26 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
                     "command_version": "",
                     "copied_from_job_id": null,
-                    "create_time": "2024-01-15T13:51:23.338975",
-                    "dependencies": [],
+                    "create_time": "2024-01-17T14:07:47.601969",
+                    "dependencies": [
+                        {
+                            "cacheable": false,
+                            "dependency_resolver": {
+                                "auto_init": true,
+                                "auto_install": true,
+                                "can_uninstall_dependencies": true,
+                                "ensure_channels": "conda-forge,bioconda,defaults",
+                                "model_class": "CondaDependencyResolver",
+                                "prefix": "/home/albert/miniconda3",
+                                "read_only": false,
+                                "resolver_type": "conda",
+                                "resolves_simple_dependencies": true,
+                                "use_local": false,
+                                "versionless": false
+                            },
+                            "dependency_type": "conda",
+                            "environment_path": "/home/albert/miniconda3/envs/__seqprep@1.3.2",
+                            "exact": true,
+                            "model_class": "MergedCondaDependency",
+                            "name": "seqprep",
+                            "version": "1.3.2"
+                        }
+                    ],
                     "exit_code": 0,
-                    "external_id": "57182",
+                    "external_id": "459123",
                     "galaxy_version": "23.1",
-                    "history_id": "8d25cafd8eb391f0",
-                    "id": "a3eaa0bc01bcd292",
+                    "history_id": "920ad766696c1cf2",
+                    "id": "40d45f2de2537ed6",
                     "inputs": {
                         "input1": {
-                            "id": "a3eaa0bc01bcd292",
+                            "id": "40d45f2de2537ed6",
                             "src": "hda",
-                            "uuid": "9bf8e7ab-9ae3-4078-9989-1c081b289f34"
+                            "uuid": "23e4b76f-fe19-4edc-948b-404c5bfcfab7"
                         },
                         "input2": {
-                            "id": "4d035ecfa467a4c8",
+                            "id": "74c67404cfc2b38c",
                             "src": "hda",
-                            "uuid": "ba572fcb-c2fc-4f33-8567-c6bd16fa7623"
+                            "uuid": "bcb30529-c0d7-48f4-9424-340f15d17a74"
                         }
                     },
                     "job_messages": [],
@@ -171,14 +194,14 @@
                     "output_collections": {},
                     "outputs": {
                         "output1": {
-                            "id": "4cceda050b5fab08",
+                            "id": "f73aa74be37268c7",
                             "src": "hda",
-                            "uuid": "4211eb63-55e9-446f-a3ff-1ec5b6c7bbbe"
+                            "uuid": "425407fd-9c91-40f6-a864-e821f1cc4b7c"
                         },
                         "output2": {
-                            "id": "0933d8c6e73d6923",
+                            "id": "5ae67b1c1450e31f",
                             "src": "hda",
-                            "uuid": "f674110d-9f3e-4e86-927b-df5e83eaf243"
+                            "uuid": "e61a1b16-4635-4190-83ca-11b38156d083"
                         }
                     },
                     "params": {
@@ -191,18 +214,18 @@
                         "trimming_options": "{\"adapter_a\": \"AGATCGGAAGAGCGGTTCAG\", \"adapter_b\": \"AGATCGGAAGAGCGTCGTGT\", \"adapter_bandwidth\": \"50\", \"adapter_overlap\": \"10\", \"gap_end\": \"2\", \"gap_extend\": \"2\", \"gap_open\": \"8\", \"local_alignment_score\": \"26\", \"max_mismatch_fraction\": \"0.02\", \"min_match_fraction\": \"0.87\", \"read_alignment_bandwidth\": \"50\", \"read_alignment_gap_end\": \"5\", \"read_alignment_gap_extend\": \"9\", \"read_alignment_gap_open\": \"26\", \"read_alignment_max_gap_fraction\": \"0.125\"}"
                     },
                     "state": "ok",
-                    "stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000107\n",
+                    "stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000104\n",
                     "stdout": "",
                     "tool_id": "seqprep",
-                    "tool_stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000107\n",
+                    "tool_stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000104\n",
                     "tool_stdout": "",
                     "traceback": null,
-                    "update_time": "2024-01-15T13:51:28.259895",
+                    "update_time": "2024-01-17T14:07:52.116041",
                     "user_email": "planemo@galaxyproject.org"
                 },
                 "status": "success",
                 "test_index": 1,
-                "time_seconds": 15.170768022537231,
+                "time_seconds": 14.501646041870117,
                 "tool_id": "seqprep",
                 "tool_version": "1.3.2+galaxy8"
             },
@@ -215,11 +238,11 @@
                     "general_options|min_length": "30",
                     "general_options|quality_cutoff": "13",
                     "input1": {
-                        "id": "802871d938442c72",
+                        "id": "588072e7fbb3f0b2",
                         "src": "hda"
                     },
                     "input2": {
-                        "id": "24387defcd6e872b",
+                        "id": "c3fcd8bf15bf18db",
                         "src": "hda"
                     },
                     "merge_reads": true,
@@ -240,26 +263,49 @@
                     "trimming_options|read_alignment_max_gap_fraction": "0.125"
                 },
                 "job": {
-                    "command_line": "SeqPrep -f '/tmp/tmpbuvzt4wn/files/e/e/b/dataset_eebb14b8-af1d-46be-b985-899b20c4e7d2.dat' -r '/tmp/tmpbuvzt4wn/files/f/7/f/dataset_f7f4a4c6-57fb-4a3c-8159-8820148d3696.dat' -1 '/tmp/tmpbuvzt4wn/job_working_directory/000/9/outputs/dataset_619e4348-59b1-4716-a2fa-e8cb2b6a8fb3.dat' -2 '/tmp/tmpbuvzt4wn/job_working_directory/000/9/outputs/dataset_69bae132-89a6-4039-98dd-87526bd59c40.dat'  -s '/tmp/tmpbuvzt4wn/job_working_directory/000/9/outputs/dataset_a96e8f74-1908-4cb5-942b-3804562c725c.dat'  -q 13 -L 30  -A AGATCGGAAGAGCGGTTCAG -B AGATCGGAAGAGCGTCGTGT -O 10 -M 0.02 -N 0.87 -b 50 -Q 8 -t 2 -e 2 -Z 26 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
+                    "command_line": "SeqPrep -f '/tmp/tmphtn8e6ou/files/9/6/c/dataset_96c5e191-0c1d-4d7c-820e-2a5705b31513.dat' -r '/tmp/tmphtn8e6ou/files/d/c/b/dataset_dcb7779f-f624-461f-8173-7f49eda3173e.dat' -1 '/tmp/tmphtn8e6ou/job_working_directory/000/9/outputs/dataset_4d8e7e46-0a7c-4840-96d1-0a30bdc23e86.dat' -2 '/tmp/tmphtn8e6ou/job_working_directory/000/9/outputs/dataset_933517c4-f44c-4e7a-8af9-2d5ddb829f54.dat'  -s '/tmp/tmphtn8e6ou/job_working_directory/000/9/outputs/dataset_4cb210fb-103c-46f9-80ae-8e276ee2a4a6.dat'  -q 13 -L 30  -A AGATCGGAAGAGCGGTTCAG -B AGATCGGAAGAGCGTCGTGT -O 10 -M 0.02 -N 0.87 -b 50 -Q 8 -t 2 -e 2 -Z 26 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
                     "command_version": "",
                     "copied_from_job_id": null,
-                    "create_time": "2024-01-15T13:51:37.359734",
-                    "dependencies": [],
+                    "create_time": "2024-01-17T14:08:01.374297",
+                    "dependencies": [
+                        {
+                            "cacheable": false,
+                            "dependency_resolver": {
+                                "auto_init": true,
+                                "auto_install": true,
+                                "can_uninstall_dependencies": true,
+                                "ensure_channels": "conda-forge,bioconda,defaults",
+                                "model_class": "CondaDependencyResolver",
+                                "prefix": "/home/albert/miniconda3",
+                                "read_only": false,
+                                "resolver_type": "conda",
+                                "resolves_simple_dependencies": true,
+                                "use_local": false,
+                                "versionless": false
+                            },
+                            "dependency_type": "conda",
+                            "environment_path": "/home/albert/miniconda3/envs/__seqprep@1.3.2",
+                            "exact": true,
+                            "model_class": "MergedCondaDependency",
+                            "name": "seqprep",
+                            "version": "1.3.2"
+                        }
+                    ],
                     "exit_code": 0,
-                    "external_id": "58617",
+                    "external_id": "459382",
                     "galaxy_version": "23.1",
-                    "history_id": "9282ff21eabe2938",
-                    "id": "0933d8c6e73d6923",
+                    "history_id": "c78bcfdc1cb747bf",
+                    "id": "5ae67b1c1450e31f",
                     "inputs": {
                         "input1": {
-                            "id": "802871d938442c72",
+                            "id": "588072e7fbb3f0b2",
                             "src": "hda",
-                            "uuid": "eebb14b8-af1d-46be-b985-899b20c4e7d2"
+                            "uuid": "96c5e191-0c1d-4d7c-820e-2a5705b31513"
                         },
                         "input2": {
-                            "id": "24387defcd6e872b",
+                            "id": "c3fcd8bf15bf18db",
                             "src": "hda",
-                            "uuid": "f7f4a4c6-57fb-4a3c-8159-8820148d3696"
+                            "uuid": "dcb7779f-f624-461f-8173-7f49eda3173e"
                         }
                     },
                     "job_messages": [],
@@ -270,19 +316,19 @@
                     "output_collections": {},
                     "outputs": {
                         "merged": {
-                            "id": "6997dc63e3f75635",
+                            "id": "d32748df3c176ed0",
                             "src": "hda",
-                            "uuid": "a96e8f74-1908-4cb5-942b-3804562c725c"
+                            "uuid": "4cb210fb-103c-46f9-80ae-8e276ee2a4a6"
                         },
                         "output1": {
-                            "id": "496f0ce56a2c1112",
+                            "id": "2cc3529554a25a92",
                             "src": "hda",
-                            "uuid": "619e4348-59b1-4716-a2fa-e8cb2b6a8fb3"
+                            "uuid": "4d8e7e46-0a7c-4840-96d1-0a30bdc23e86"
                         },
                         "output2": {
-                            "id": "39a203adf7422dec",
+                            "id": "5a1f7327531d4aa9",
                             "src": "hda",
-                            "uuid": "69bae132-89a6-4039-98dd-87526bd59c40"
+                            "uuid": "933517c4-f44c-4e7a-8af9-2d5ddb829f54"
                         }
                     },
                     "params": {
@@ -301,12 +347,12 @@
                     "tool_stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t0\nPairs Discarded:\t0\nCPU Time Used (Minutes):\t0.000001\n",
                     "tool_stdout": "",
                     "traceback": null,
-                    "update_time": "2024-01-15T13:51:41.740881",
+                    "update_time": "2024-01-17T14:08:05.901787",
                     "user_email": "planemo@galaxyproject.org"
                 },
                 "status": "success",
                 "test_index": 2,
-                "time_seconds": 13.562148332595825,
+                "time_seconds": 13.858723163604736,
                 "tool_id": "seqprep",
                 "tool_version": "1.3.2+galaxy8"
             },
@@ -319,36 +365,59 @@
                     "general_options|min_length": "25",
                     "general_options|quality_cutoff": "15",
                     "input1": {
-                        "id": "db42995a3176f6e3",
+                        "id": "26cc60daa6a953a8",
                         "src": "hda"
                     },
                     "input2": {
-                        "id": "5373f90f8e90b06d",
+                        "id": "61025d74aed2b22d",
                         "src": "hda"
                     },
                     "merge_reads": false
                 },
                 "job": {
-                    "command_line": "SeqPrep -f '/tmp/tmpbuvzt4wn/files/a/8/8/dataset_a885df5b-07a1-49ac-952a-c5db7ebdbd3e.dat' -r '/tmp/tmpbuvzt4wn/files/3/4/6/dataset_3468e6e3-ac6a-4b43-a307-3253af619b68.dat' -1 '/tmp/tmpbuvzt4wn/job_working_directory/000/12/outputs/dataset_136f50da-00ad-4807-8569-47060efd90ff.dat' -2 '/tmp/tmpbuvzt4wn/job_working_directory/000/12/outputs/dataset_21bdf73b-0bd3-448e-8458-a09e2ef39c4d.dat'   -q 15 -L 25  -A AGATCGGAAGAGCGGTTCAG -B AGATCGGAAGAGCGTCGTGT -O 10 -M 0.02 -N 0.87 -b 50 -Q 8 -t 2 -e 2 -Z 26 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
+                    "command_line": "SeqPrep -f '/tmp/tmphtn8e6ou/files/8/9/1/dataset_8912a9b9-f5ce-4fee-a8e8-5a80e46a646d.dat' -r '/tmp/tmphtn8e6ou/files/0/3/6/dataset_03601dcf-59c1-4065-91cb-6155519cd739.dat' -1 '/tmp/tmphtn8e6ou/job_working_directory/000/12/outputs/dataset_928c0a4e-4eb3-4865-bfc2-cf13ce41c6f6.dat' -2 '/tmp/tmphtn8e6ou/job_working_directory/000/12/outputs/dataset_6cacc9dd-df46-4b58-83ff-21d7e0fdb221.dat'   -q 15 -L 25  -A AGATCGGAAGAGCGGTTCAG -B AGATCGGAAGAGCGTCGTGT -O 10 -M 0.02 -N 0.87 -b 50 -Q 8 -t 2 -e 2 -Z 26 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
                     "command_version": "",
                     "copied_from_job_id": null,
-                    "create_time": "2024-01-15T13:51:51.106536",
-                    "dependencies": [],
+                    "create_time": "2024-01-17T14:08:16.067429",
+                    "dependencies": [
+                        {
+                            "cacheable": false,
+                            "dependency_resolver": {
+                                "auto_init": true,
+                                "auto_install": true,
+                                "can_uninstall_dependencies": true,
+                                "ensure_channels": "conda-forge,bioconda,defaults",
+                                "model_class": "CondaDependencyResolver",
+                                "prefix": "/home/albert/miniconda3",
+                                "read_only": false,
+                                "resolver_type": "conda",
+                                "resolves_simple_dependencies": true,
+                                "use_local": false,
+                                "versionless": false
+                            },
+                            "dependency_type": "conda",
+                            "environment_path": "/home/albert/miniconda3/envs/__seqprep@1.3.2",
+                            "exact": true,
+                            "model_class": "MergedCondaDependency",
+                            "name": "seqprep",
+                            "version": "1.3.2"
+                        }
+                    ],
                     "exit_code": 0,
-                    "external_id": "60081",
+                    "external_id": "459642",
                     "galaxy_version": "23.1",
-                    "history_id": "4b7543690eba41ff",
-                    "id": "496f0ce56a2c1112",
+                    "history_id": "8f815be1e810b24b",
+                    "id": "2cc3529554a25a92",
                     "inputs": {
                         "input1": {
-                            "id": "db42995a3176f6e3",
+                            "id": "26cc60daa6a953a8",
                             "src": "hda",
-                            "uuid": "a885df5b-07a1-49ac-952a-c5db7ebdbd3e"
+                            "uuid": "8912a9b9-f5ce-4fee-a8e8-5a80e46a646d"
                         },
                         "input2": {
-                            "id": "5373f90f8e90b06d",
+                            "id": "61025d74aed2b22d",
                             "src": "hda",
-                            "uuid": "3468e6e3-ac6a-4b43-a307-3253af619b68"
+                            "uuid": "03601dcf-59c1-4065-91cb-6155519cd739"
                         }
                     },
                     "job_messages": [],
@@ -359,14 +428,14 @@
                     "output_collections": {},
                     "outputs": {
                         "output1": {
-                            "id": "33eb73ecbcc5c005",
+                            "id": "f16c025693ced259",
                             "src": "hda",
-                            "uuid": "136f50da-00ad-4807-8569-47060efd90ff"
+                            "uuid": "928c0a4e-4eb3-4865-bfc2-cf13ce41c6f6"
                         },
                         "output2": {
-                            "id": "eea4f26a29257b23",
+                            "id": "d0462e850881d91e",
                             "src": "hda",
-                            "uuid": "21bdf73b-0bd3-448e-8458-a09e2ef39c4d"
+                            "uuid": "6cacc9dd-df46-4b58-83ff-21d7e0fdb221"
                         }
                     },
                     "params": {
@@ -379,18 +448,18 @@
                         "trimming_options": "{\"adapter_a\": \"AGATCGGAAGAGCGGTTCAG\", \"adapter_b\": \"AGATCGGAAGAGCGTCGTGT\", \"adapter_bandwidth\": \"50\", \"adapter_overlap\": \"10\", \"gap_end\": \"2\", \"gap_extend\": \"2\", \"gap_open\": \"8\", \"local_alignment_score\": \"26\", \"max_mismatch_fraction\": \"0.02\", \"min_match_fraction\": \"0.87\", \"read_alignment_bandwidth\": \"50\", \"read_alignment_gap_end\": \"5\", \"read_alignment_gap_extend\": \"9\", \"read_alignment_gap_open\": \"26\", \"read_alignment_max_gap_fraction\": \"0.125\"}"
                     },
                     "state": "ok",
-                    "stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000095\n",
+                    "stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000105\n",
                     "stdout": "",
                     "tool_id": "seqprep",
-                    "tool_stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000095\n",
+                    "tool_stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t22\nPairs Discarded:\t9\nCPU Time Used (Minutes):\t0.000105\n",
                     "tool_stdout": "",
                     "traceback": null,
-                    "update_time": "2024-01-15T13:51:55.640232",
+                    "update_time": "2024-01-17T14:08:20.760722",
                     "user_email": "planemo@galaxyproject.org"
                 },
                 "status": "success",
                 "test_index": 3,
-                "time_seconds": 13.665749549865723,
+                "time_seconds": 14.331654071807861,
                 "tool_id": "seqprep",
                 "tool_version": "1.3.2+galaxy8"
             },
@@ -401,13 +470,14 @@
             "data": {
                 "inputs": {
                     "input1": {
-                        "id": "945b6ced7e03215a",
+                        "id": "e4f8e9498f3651ee",
                         "src": "hda"
                     },
                     "input2": {
-                        "id": "2040f85976c5f1ff",
+                        "id": "94083cc9b2d4bc32",
                         "src": "hda"
                     },
+                    "merge_reads": false,
                     "trimming_options|adapter_a": "ACTGACTG",
                     "trimming_options|adapter_b": "GTGACTGA",
                     "trimming_options|adapter_bandwidth": "55",
@@ -420,26 +490,49 @@
                     "trimming_options|min_match_fraction": "0.85"
                 },
                 "job": {
-                    "command_line": "SeqPrep -f '/tmp/tmpbuvzt4wn/files/c/8/1/dataset_c818064f-7b83-441d-84e8-be37058fefb1.dat' -r '/tmp/tmpbuvzt4wn/files/3/8/d/dataset_38da8525-2f61-4ff1-b117-8b3ed431128e.dat' -1 '/tmp/tmpbuvzt4wn/job_working_directory/000/15/outputs/dataset_2d8259d4-c047-4f53-a7d4-84ad89df25a7.dat' -2 '/tmp/tmpbuvzt4wn/job_working_directory/000/15/outputs/dataset_b5e78133-2b7a-4a0e-983e-08cd3fc11d24.dat'   -q 13 -L 30  -A ACTGACTG -B GTGACTGA -O 12 -M 0.03 -N 0.85 -b 55 -Q 10 -t 3 -e 3 -Z 28 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
+                    "command_line": "SeqPrep -f '/tmp/tmphtn8e6ou/files/f/f/b/dataset_ffb9ef07-4382-438d-9b71-ade92846c16c.dat' -r '/tmp/tmphtn8e6ou/files/1/e/7/dataset_1e7ec7ec-c580-4950-ada1-be680434f33b.dat' -1 '/tmp/tmphtn8e6ou/job_working_directory/000/15/outputs/dataset_a54650a3-06e9-4d9b-8fbb-ecb9e872af4c.dat' -2 '/tmp/tmphtn8e6ou/job_working_directory/000/15/outputs/dataset_0ce1734f-b7aa-4615-82f5-ba732cce5f54.dat'   -q 13 -L 30  -A ACTGACTG -B GTGACTGA -O 12 -M 0.03 -N 0.85 -b 55 -Q 10 -t 3 -e 3 -Z 28 -w 50 -W 26 -p 9 -P 5 -X 0.125  -o 15 -m 0.02 -n 0.9",
                     "command_version": "",
                     "copied_from_job_id": null,
-                    "create_time": "2024-01-15T13:52:05.338525",
-                    "dependencies": [],
+                    "create_time": "2024-01-17T14:08:30.163854",
+                    "dependencies": [
+                        {
+                            "cacheable": false,
+                            "dependency_resolver": {
+                                "auto_init": true,
+                                "auto_install": true,
+                                "can_uninstall_dependencies": true,
+                                "ensure_channels": "conda-forge,bioconda,defaults",
+                                "model_class": "CondaDependencyResolver",
+                                "prefix": "/home/albert/miniconda3",
+                                "read_only": false,
+                                "resolver_type": "conda",
+                                "resolves_simple_dependencies": true,
+                                "use_local": false,
+                                "versionless": false
+                            },
+                            "dependency_type": "conda",
+                            "environment_path": "/home/albert/miniconda3/envs/__seqprep@1.3.2",
+                            "exact": true,
+                            "model_class": "MergedCondaDependency",
+                            "name": "seqprep",
+                            "version": "1.3.2"
+                        }
+                    ],
                     "exit_code": 0,
-                    "external_id": "61498",
+                    "external_id": "459899",
                     "galaxy_version": "23.1",
-                    "history_id": "4f7d68a4cf668214",
-                    "id": "db42995a3176f6e3",
+                    "history_id": "dadce36532a50430",
+                    "id": "26cc60daa6a953a8",
                     "inputs": {
                         "input1": {
-                            "id": "945b6ced7e03215a",
+                            "id": "e4f8e9498f3651ee",
                             "src": "hda",
-                            "uuid": "c818064f-7b83-441d-84e8-be37058fefb1"
+                            "uuid": "ffb9ef07-4382-438d-9b71-ade92846c16c"
                         },
                         "input2": {
-                            "id": "2040f85976c5f1ff",
+                            "id": "94083cc9b2d4bc32",
                             "src": "hda",
-                            "uuid": "38da8525-2f61-4ff1-b117-8b3ed431128e"
+                            "uuid": "1e7ec7ec-c580-4950-ada1-be680434f33b"
                         }
                     },
                     "job_messages": [],
@@ -450,14 +543,14 @@
                     "output_collections": {},
                     "outputs": {
                         "output1": {
-                            "id": "b7331f5cae575560",
+                            "id": "ecd12e00a855436a",
                             "src": "hda",
-                            "uuid": "2d8259d4-c047-4f53-a7d4-84ad89df25a7"
+                            "uuid": "a54650a3-06e9-4d9b-8fbb-ecb9e872af4c"
                         },
                         "output2": {
-                            "id": "bfa1cb49e91ad152",
+                            "id": "9f41a945eaae95ea",
                             "src": "hda",
-                            "uuid": "b5e78133-2b7a-4a0e-983e-08cd3fc11d24"
+                            "uuid": "0ce1734f-b7aa-4615-82f5-ba732cce5f54"
                         }
                     },
                     "params": {
@@ -470,18 +563,18 @@
                         "trimming_options": "{\"adapter_a\": \"ACTGACTG\", \"adapter_b\": \"GTGACTGA\", \"adapter_bandwidth\": \"55\", \"adapter_overlap\": \"12\", \"gap_end\": \"3\", \"gap_extend\": \"3\", \"gap_open\": \"10\", \"local_alignment_score\": \"28\", \"max_mismatch_fraction\": \"0.03\", \"min_match_fraction\": \"0.85\", \"read_alignment_bandwidth\": \"50\", \"read_alignment_gap_end\": \"5\", \"read_alignment_gap_extend\": \"9\", \"read_alignment_gap_open\": \"26\", \"read_alignment_max_gap_fraction\": \"0.125\"}"
                     },
                     "state": "ok",
-                    "stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t4\nPairs Discarded:\t2\nCPU Time Used (Minutes):\t0.000049\n",
+                    "stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t4\nPairs Discarded:\t2\nCPU Time Used (Minutes):\t0.000062\n",
                     "stdout": "",
                     "tool_id": "seqprep",
-                    "tool_stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t4\nPairs Discarded:\t2\nCPU Time Used (Minutes):\t0.000049\n",
+                    "tool_stderr": "\nPairs Processed:\t0\nPairs Merged:\t0\nPairs With Adapters:\t4\nPairs Discarded:\t2\nCPU Time Used (Minutes):\t0.000062\n",
                     "tool_stdout": "",
                     "traceback": null,
-                    "update_time": "2024-01-15T13:52:10.586426",
+                    "update_time": "2024-01-17T14:08:34.783161",
                     "user_email": "planemo@galaxyproject.org"
                 },
                 "status": "success",
                 "test_index": 4,
-                "time_seconds": 14.718641519546509,
+                "time_seconds": 14.069836854934692,
                 "tool_id": "seqprep",
                 "tool_version": "1.3.2+galaxy8"
             },
