@@ -299,6 +299,19 @@
             <output name="output1" file="output1_adapter_trim.fq.gz" />
             <output name="output2" file="output2_adapter_trim.fq.gz" />
         </test>
+
+        
+        <!-- Test with gzipped input files #6 -->
+        <test expect_num_outputs="3">
+            <param name="input1" value="input1.fq.gz" ftype="fastq.gz"/>
+            <param name="input2" value="input2.fq.gz" ftype="fastq.gz"/>
+            <param name="merge_reads" value="true" />
+
+            <!-- Expected Outputs -->
+            <output name="output1" file="expected_output1_from_gzipped.fq.gz" ftype="fastq.gz"/>
+            <output name="output2" file="expected_output2_from_gzipped.fq.gz" ftype="fastq.gz"/>
+            <output name="merged" file="expected_merged_output_from_gzipped.fq.gz" ftype="fastq.gz"/>
+        </test>
     </tests>
     <help><![CDATA[
     **SeqPrep**
@@ -317,10 +330,7 @@
 
     **Outputs**
 
-    SeqPrep generates outputs in gzipped FASTQ format. Depending on your settings, this may include:
-
-    - Individual read files (if they are not fully merged).
-    - A combined read file with merged reads.
+    SeqPrep generates outputs in gzipped FASTQ format.
 
     ]]></help>
     <expand macro="citations"/>
