@@ -303,8 +303,8 @@
         
         <!-- Test with gzipped input files #6 -->
         <test expect_num_outputs="3">
-            <param name="input1" value="input1.fq.gz" />
-            <param name="input2" value="input2.fq.gz" />
+            <param name="input1" value="input1.fastq.gz" />
+            <param name="input2" value="input2.fastq.gz" />
             <param name="merge_reads" value="true" />
 
             <!-- Expected Outputs -->
